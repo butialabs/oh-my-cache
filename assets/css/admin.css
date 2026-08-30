@@ -1,0 +1,251 @@
+/**
+ * Oh My Cache!
+ */
+
+.omc-cards {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 16px;
+	margin: 16px 0;
+}
+
+.omc-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	flex: 1 1 240px;
+	min-width: 240px;
+	padding: 12px 16px;
+}
+
+.omc-card h3 {
+	margin: 0 0 6px;
+}
+
+.omc-card .omc-state {
+	font-weight: 600;
+	margin: 0 0 4px;
+}
+
+.omc-card .omc-reason,
+.omc-card .omc-hint,
+.omc-card .omc-meta {
+	color: #646970;
+	font-size: 12px;
+	margin: 0 0 4px;
+}
+
+.omc-warning {
+	color: #996800;
+}
+
+.omc-actions {
+	margin: 16px 0;
+}
+
+.omc-inline-field {
+	display: inline-block;
+	margin-left: 8px;
+}
+
+.omc-table th {
+	width: 240px;
+}
+
+/* Diagnostics rows carry their state on the left edge rather than in colour alone. */
+.omc-check--ok th {
+	border-left: 4px solid #00a32a;
+}
+
+.omc-check--warning th {
+	border-left: 4px solid #dba617;
+}
+
+.omc-check--error th {
+	border-left: 4px solid #d63638;
+}
+
+.omc-status {
+	border-radius: 9px;
+	display: inline-block;
+	font-size: 11px;
+	line-height: 18px;
+	padding: 0 8px;
+}
+
+.omc-status--info {
+	background: #e5f0f7;
+	color: #0a4b78;
+}
+
+.omc-status--warning {
+	background: #fcf3e3;
+	color: #7a5000;
+}
+
+.omc-status--success {
+	background: #edfaef;
+	color: #005c12;
+}
+
+.omc-status--error {
+	background: #fcf0f1;
+	color: #8a2424;
+}
+
+.omc-urls,
+.omc-error {
+	background: #f6f7f7;
+	font-family: Consolas, Monaco, monospace;
+	font-size: 12px;
+	margin-top: 6px;
+	max-height: 240px;
+	overflow: auto;
+	padding: 8px;
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.omc-expression {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	font-size: 12px;
+	overflow-x: auto;
+	padding: 10px;
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.omc-progress {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	list-style: none;
+	margin: 16px 0 24px;
+	padding: 0;
+}
+
+.omc-progress__item {
+	background: #f0f0f1;
+	border-radius: 3px;
+	counter-increment: omc-step;
+	padding: 6px 12px;
+}
+
+.omc-progress__item a {
+	text-decoration: none;
+}
+
+.omc-progress__item.is-current {
+	background: #2271b1;
+}
+
+.omc-progress__item.is-current a {
+	color: #fff;
+}
+
+.omc-progress__item.is-done::before {
+	content: "\2713\00a0";
+	color: #00a32a;
+}
+
+.omc-progress__item.is-current.is-done::before {
+	color: #fff;
+}
+
+.omc-checklist {
+	list-style: none;
+	margin: 8px 0;
+	padding: 0;
+}
+
+.omc-checklist .is-ok {
+	color: #005c12;
+}
+
+.omc-checklist .is-missing {
+	color: #8a2424;
+	font-weight: 600;
+}
+
+.omc-badge {
+	background: #d63638;
+	border-radius: 8px;
+	color: #fff;
+	display: inline-block;
+	font-size: 10px;
+	line-height: 16px;
+	min-width: 16px;
+	text-align: center;
+}
+
+/* Tabbed settings and wizard */
+
+.omc-panel {
+	margin-top: 8px;
+}
+
+.omc-driver-block,
+.omc-cdn-block {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	margin: 12px 0;
+	padding: 4px 16px 12px;
+}
+
+.omc-driver-block h3,
+.omc-cdn-block h3 {
+	margin-top: 12px;
+}
+
+/* Radio choices with a line of explanation underneath. */
+.omc-choice-help {
+	margin: 0 0 10px 24px;
+}
+
+.omc-tab-done {
+	color: #00a32a;
+	font-size: 16px;
+	height: 16px;
+	vertical-align: text-bottom;
+	width: 16px;
+}
+
+.nav-tab-active .omc-tab-done {
+	color: #135e96;
+}
+
+.omc-result-list {
+	list-style: disc;
+	margin: 0 0 12px 24px;
+}
+
+.omc-test-result.is-ok {
+	color: #005c12;
+}
+
+.omc-test-result.is-missing {
+	color: #8a2424;
+}
+
+.omc-wizard .form-table th {
+	width: 220px;
+}
+
+.omc-secrets-fields {
+	display: none;
+}
+
+/* Card: category as the heading, the product filling it underneath. */
+.omc-card .omc-provider {
+	font-size: 15px;
+	font-weight: 600;
+	margin: 0 0 4px;
+}
+
+.omc-card .omc-state {
+	color: #646970;
+	font-size: 12px;
+	font-weight: 400;
+}

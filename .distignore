@@ -1,0 +1,23 @@
+# Kept in the repository, left out of the built plugin.
+# Honoured by the 10up deploy and build-zip actions.
+
+.git
+.github
+.gitignore
+.gitattributes
+.distignore
+.wordpress-org
+
+composer.json
+composer.lock
+phpcs.xml
+phpcs.xml.dist
+phpunit.xml
+phpunit.xml.dist
+package.json
+package-lock.json
+node_modules
+
+tests
+README.md
+Development.md

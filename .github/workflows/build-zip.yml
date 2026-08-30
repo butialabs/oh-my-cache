@@ -1,0 +1,24 @@
+name: Build Release Zip
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Zip
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Build
+        run: composer install --no-dev --optimize-autoloader
+
+      - name: WordPress Plugin Build Zip
+        uses: 10up/action-wordpress-plugin-build-zip@stable
+        with:
+          archive-name: oh-my-cache
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
