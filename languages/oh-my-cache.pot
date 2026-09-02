@@ -1,0 +1,1880 @@
+# Copyright (C) 2026 Butiá Labs
+# This file is distributed under the GPL-3.0-or-later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Oh My Cache! 0.1.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/oh-my-cache\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-02T17:28:03+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: oh-my-cache\n"
+
+#. Plugin Name of the plugin
+#: oh-my-cache.php
+#: src/Admin/AdminBar.php:49
+#: src/Admin/Dashboard.php:87
+#: src/Admin/Menu.php:66
+#: src/Admin/Menu.php:67
+msgid "Oh My Cache!"
+msgstr ""
+
+#. Plugin URI of the plugin
+#: oh-my-cache.php
+msgid "https://github.com/butialabs/oh-my-cache"
+msgstr ""
+
+#. Description of the plugin
+#: oh-my-cache.php
+msgid "Clears your NGINX or Redis page cache and then Cloudflare and retries anything that fails instead of losing it."
+msgstr ""
+
+#. Author of the plugin
+#: oh-my-cache.php
+msgid "Butiá Labs"
+msgstr ""
+
+#. translators: 1: required PHP version, 2: required WordPress version, 3: running PHP version, 4: running WordPress version
+#: oh-my-cache.php:57
+#, php-format
+msgid "Oh My Cache! requires PHP %1$s and WordPress %2$s or newer. This site runs PHP %3$s and WordPress %4$s, so the plugin is idle."
+msgstr ""
+
+#: src/Admin/AdminBar.php:68
+#: src/Admin/Dashboard.php:202
+msgid "Purge this URL"
+msgstr ""
+
+#: src/Admin/AdminBar.php:78
+#: src/Admin/Dashboard.php:191
+msgid "Purge everything"
+msgstr ""
+
+#. translators: %d: number of queued jobs.
+#: src/Admin/AdminBar.php:93
+#, php-format
+msgid "Queue: %d waiting"
+msgstr ""
+
+#. translators: 1: number of queued jobs, 2: human readable age.
+#: src/Admin/AdminBar.php:98
+#, php-format
+msgid "Queue: %1$d waiting, oldest %2$s"
+msgstr ""
+
+#: src/Admin/AdminBar.php:113
+#: src/Admin/Dashboard.php:344
+msgid "You do not have permission to purge the cache."
+msgstr ""
+
+#: src/Admin/Ajax.php:54
+msgid "Unknown driver."
+msgstr ""
+
+#. translators: 1: Redis server version, 2: phpredis extension version.
+#: src/Admin/Ajax.php:105
+#, php-format
+msgid "Connected. Redis %1$s via phpredis %2$s."
+msgstr ""
+
+#. translators: %s: token status reported by Cloudflare.
+#: src/Admin/Ajax.php:121
+#, php-format
+msgid "Token is valid (status: %s)."
+msgstr ""
+
+#: src/Admin/Ajax.php:127
+msgid "Cache directory exists and is writable."
+msgstr ""
+
+#: src/Admin/Ajax.php:130
+#: src/Admin/Doctor.php:143
+msgid "Ready."
+msgstr ""
+
+#: src/Admin/Ajax.php:140
+msgid "You do not have permission to do that."
+msgstr ""
+
+#: src/Admin/Dashboard.php:100
+#: src/Admin/QueueListTable.php:66
+#: src/Admin/SettingsPage.php:43
+#: src/Admin/SettingsPage.php:176
+#: src/Wizard/Steps/DriverStep.php:42
+msgid "Driver"
+msgstr ""
+
+#: src/Admin/Dashboard.php:102
+msgid "No local cache"
+msgstr ""
+
+#: src/Admin/Dashboard.php:106
+msgid "CDN edge cache"
+msgstr ""
+
+#: src/Admin/Dashboard.php:108
+msgid "No CDN"
+msgstr ""
+
+#: src/Admin/Dashboard.php:135
+msgid "Not configured"
+msgstr ""
+
+#: src/Admin/Dashboard.php:146
+msgid "Ready"
+msgstr ""
+
+#: src/Admin/Dashboard.php:146
+msgid "Unavailable"
+msgstr ""
+
+#. translators: %s: dispatch mode.
+#: src/Admin/Dashboard.php:162
+#, php-format
+msgid "Dispatch: %s"
+msgstr ""
+
+#. translators: %d: seconds.
+#: src/Admin/Dashboard.php:174
+#, php-format
+msgid "Circuit breaker open for %d more seconds; work is going straight to the queue."
+msgstr ""
+
+#: src/Admin/Dashboard.php:196
+msgid "Preload from sitemap"
+msgstr ""
+
+#: src/Admin/Dashboard.php:201
+msgid "https://example.com/a-page/"
+msgstr ""
+
+#: src/Admin/Dashboard.php:215
+#: src/Admin/SettingsPage.php:338
+#: src/Cache/CloudflareDriver.php:57
+#: src/Cdn/Providers.php:46
+msgid "Cloudflare"
+msgstr ""
+
+#: src/Admin/Dashboard.php:219
+#: src/Admin/SettingsPage.php:357
+msgid "Zone"
+msgstr ""
+
+#: src/Admin/Dashboard.php:219
+msgid "not resolved"
+msgstr ""
+
+#: src/Admin/Dashboard.php:220
+msgid "Plan"
+msgstr ""
+
+#: src/Admin/Dashboard.php:220
+msgid "unknown"
+msgstr ""
+
+#: src/Admin/Dashboard.php:221
+msgid "Credential"
+msgstr ""
+
+#: src/Admin/Dashboard.php:222
+msgid "Edge TTL"
+msgstr ""
+
+#. translators: %d: seconds.
+#: src/Admin/Dashboard.php:225
+#, php-format
+msgid "%d seconds"
+msgstr ""
+
+#: src/Admin/Dashboard.php:228
+msgid "off"
+msgstr ""
+
+#: src/Admin/Dashboard.php:244
+msgid "API token from an environment variable (not stored in the database)"
+msgstr ""
+
+#: src/Admin/Dashboard.php:245
+msgid "API token from a constant (not stored in the database)"
+msgstr ""
+
+#: src/Admin/Dashboard.php:246
+msgid "API token stored in the database"
+msgstr ""
+
+#: src/Admin/Dashboard.php:247
+msgid "none configured"
+msgstr ""
+
+#: src/Admin/Dashboard.php:257
+#: src/Admin/Menu.php:86
+#: src/Admin/Menu.php:87
+#: src/Admin/SettingsPage.php:47
+#: src/Admin/SettingsPage.php:585
+msgid "Queue"
+msgstr ""
+
+#. translators: 1: pending count, 2: dead count.
+#: src/Admin/Dashboard.php:264
+#, php-format
+msgid "%1$d waiting, %2$d gave up."
+msgstr ""
+
+#. translators: %s: human readable duration.
+#: src/Admin/Dashboard.php:282
+#, php-format
+msgid "Oldest job has been waiting %s."
+msgstr ""
+
+#: src/Admin/Dashboard.php:293
+msgid "The worker has not run yet."
+msgstr ""
+
+#. translators: %s: human readable duration.
+#: src/Admin/Dashboard.php:296
+#, php-format
+msgid "Worker last ran %s ago."
+msgstr ""
+
+#: src/Admin/Dashboard.php:305
+msgid "Open the queue"
+msgstr ""
+
+#: src/Admin/Dashboard.php:313
+msgid "Diagnostics"
+msgstr ""
+
+#. translators: %d: number of queued batches.
+#: src/Admin/Dashboard.php:368
+#, php-format
+msgid "%d preload batch queued."
+msgid_plural "%d preload batches queued."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/Doctor.php:88
+msgid "Queue table"
+msgstr ""
+
+#. translators: %s: database table name.
+#: src/Admin/Doctor.php:92
+#, php-format
+msgid "%s exists."
+msgstr ""
+
+#: src/Admin/Doctor.php:95
+msgid "The jobs table is missing, so nothing can be retried."
+msgstr ""
+
+#: src/Admin/Doctor.php:98
+msgid "Deactivate and reactivate the plugin to recreate it."
+msgstr ""
+
+#: src/Admin/Doctor.php:107
+msgid "Autoloaded settings size"
+msgstr ""
+
+#. translators: 1: current size in bytes, 2: budget in bytes.
+#: src/Admin/Doctor.php:110
+#, php-format
+msgid "%1$s bytes of a %2$s byte budget."
+msgstr ""
+
+#: src/Admin/Doctor.php:114
+msgid "Something oversized is being stored in the autoloaded option; it is loaded on every request."
+msgstr ""
+
+#. translators: %s: driver label.
+#: src/Admin/Doctor.php:153
+#, php-format
+msgid "%s circuit breaker"
+msgstr ""
+
+#. translators: %d: seconds remaining.
+#: src/Admin/Doctor.php:158
+#, php-format
+msgid "Open for another %d seconds after repeated inline failures; work is going straight to the queue."
+msgstr ""
+
+#: src/Admin/Doctor.php:170
+msgid "Purge drivers"
+msgstr ""
+
+#: src/Admin/Doctor.php:171
+msgid "No driver is enabled, so nothing is ever purged."
+msgstr ""
+
+#: src/Admin/Doctor.php:172
+msgid "Enable at least one of NGINX, Redis or Cloudflare in Settings."
+msgstr ""
+
+#: src/Admin/Doctor.php:180
+msgid "phpredis extension"
+msgstr ""
+
+#. translators: 1: installed version, 2: version the plugin is tested against.
+#: src/Admin/Doctor.php:184
+#, php-format
+msgid "Version %1$s installed (tested against %2$s)."
+msgstr ""
+
+#. translators: 1: installed version or "not installed", 2: minimum version.
+#: src/Admin/Doctor.php:190
+#, php-format
+msgid "%1$s; the Redis driver needs %2$s or newer."
+msgstr ""
+
+#: src/Admin/Doctor.php:191
+msgid "Not installed"
+msgstr ""
+
+#: src/Admin/Doctor.php:206
+msgid "Redis server"
+msgstr ""
+
+#. translators: 1: Redis server version, 2: key prefix.
+#: src/Admin/Doctor.php:210
+#, php-format
+msgid "Reachable, version %1$s, prefix \"%2$s\"."
+msgstr ""
+
+#: src/Admin/Doctor.php:225
+msgid "NGINX HTTP purge mode"
+msgstr ""
+
+#: src/Admin/Doctor.php:226
+msgid "This mode makes the site request its own hostname. On a small PHP-FPM pool that request can block on itself."
+msgstr ""
+
+#: src/Admin/Doctor.php:227
+msgid "Make sure pm.max_children is at least 5, or set this driver to queue-only dispatch."
+msgstr ""
+
+#: src/Admin/Doctor.php:253
+msgid "Cloudflare token storage"
+msgstr ""
+
+#: src/Admin/Doctor.php:255
+msgid "Supplied by an environment variable; never written to the database."
+msgstr ""
+
+#: src/Admin/Doctor.php:256
+msgid "Supplied by a constant in wp-config.php; never written to the database."
+msgstr ""
+
+#: src/Admin/Doctor.php:257
+msgid "Stored in the database, so it appears in every backup and staging copy."
+msgstr ""
+
+#: src/Admin/Doctor.php:258
+msgid "No token is configured."
+msgstr ""
+
+#: src/Admin/Doctor.php:261
+msgid "Move it to the OH_MY_CACHE_CF_API_TOKEN environment variable or constant; the plugin will stop persisting it."
+msgstr ""
+
+#: src/Admin/Doctor.php:271
+msgid "Leftover stored credentials"
+msgstr ""
+
+#: src/Admin/Doctor.php:272
+msgid "A credential exists in the database while the environment also supplies one. The environment wins, so the stored copy is dead weight."
+msgstr ""
+
+#: src/Admin/Doctor.php:273
+msgid "Delete the stored copy from the Cloudflare settings tab."
+msgstr ""
+
+#: src/Admin/Doctor.php:288
+msgid "Edge TTL safety"
+msgstr ""
+
+#: src/Admin/Doctor.php:290
+msgid "Pages are pinned at the edge while purging is broken or has dead jobs. Stale HTML will be served for hours."
+msgstr ""
+
+#. translators: %d: TTL in seconds.
+#: src/Admin/Doctor.php:293
+#, php-format
+msgid "Guest HTML is cached at the edge for %d seconds, and purging is healthy."
+msgstr ""
+
+#: src/Admin/Doctor.php:296
+msgid "Fix the Cloudflare driver or retry the dead jobs, or set the edge TTL back to zero until it is fixed."
+msgstr ""
+
+#: src/Admin/Doctor.php:314
+msgid "Queue worker"
+msgstr ""
+
+#: src/Admin/Doctor.php:316
+msgid "The worker has never run."
+msgstr ""
+
+#. translators: %s: human readable time difference.
+#: src/Admin/Doctor.php:319
+#, php-format
+msgid "Last ran %s ago."
+msgstr ""
+
+#: src/Admin/Doctor.php:323
+msgid "Work is waiting but the worker is not running. If DISABLE_WP_CRON is set, add a system crontab entry: * * * * * wp oh-my-cache queue run --all --quiet"
+msgstr ""
+
+#: src/Admin/Doctor.php:331
+msgid "WP-Cron"
+msgstr ""
+
+#: src/Admin/Doctor.php:332
+msgid "DISABLE_WP_CRON is set, so WordPress will not run scheduled work on its own."
+msgstr ""
+
+#: src/Admin/Doctor.php:333
+msgid "A real crontab must call wp-cron.php or `wp oh-my-cache queue run --all`, otherwise queued purges never happen."
+msgstr ""
+
+#: src/Admin/Doctor.php:357
+msgid "Sitemaps"
+msgstr ""
+
+#. translators: 1: name of the plugin generating sitemaps, 2: comma separated URLs.
+#: src/Admin/Doctor.php:361
+#, php-format
+msgid "Generated by %1$s. These are cleared: %2$s"
+msgstr ""
+
+#: src/Admin/Doctor.php:365
+msgid "No sitemap generator was found, so none is being cleared."
+msgstr ""
+
+#: src/Admin/Doctor.php:379
+msgid "If something here does generate sitemaps, add its URL under When to purge."
+msgstr ""
+
+#: src/Admin/Doctor.php:388
+msgid "The index listed no files, so only the index is cleared. Usually that means the site cannot make requests to itself."
+msgstr ""
+
+#: src/Admin/Doctor.php:391
+msgid "Only the index is known so far. The rest is read from it in the next few minutes, then twice a day."
+msgstr ""
+
+#: src/Admin/Doctor.php:418
+msgid "WooCommerce"
+msgstr ""
+
+#. translators: %s: comma separated paths.
+#: src/Admin/Doctor.php:422
+#, php-format
+msgid "Stock, price and variation changes clear the cache. Never cached at the edge: %s"
+msgstr ""
+
+#: src/Admin/Doctor.php:425
+msgid "Stock and price changes clear nothing while that switch is off."
+msgstr ""
+
+#: src/Admin/Doctor.php:428
+msgid "WooCommerce changes stock without saving the post, so a sold-out product keeps showing as in stock."
+msgstr ""
+
+#: src/Admin/Doctor.php:446
+msgid "Outbound HTTP"
+msgstr ""
+
+#: src/Admin/Doctor.php:448
+msgid "External requests are restricted, but Cloudflare is allowed."
+msgstr ""
+
+#: src/Admin/Doctor.php:449
+msgid "WP_HTTP_BLOCK_EXTERNAL is on and api.cloudflare.com is not allowed, so Cloudflare purges will fail."
+msgstr ""
+
+#: src/Admin/Doctor.php:450
+msgid "Add api.cloudflare.com to WP_ACCESSIBLE_HOSTS."
+msgstr ""
+
+#: src/Admin/Doctor.php:460
+msgid "Overlapping plugins"
+msgstr ""
+
+#. translators: %s: comma separated plugin names.
+#: src/Admin/Doctor.php:463
+#, php-format
+msgid "%s is still active and will purge the same URLs."
+msgstr ""
+
+#: src/Admin/Doctor.php:466
+msgid "Double purging is not harmful, but it doubles Cloudflare API usage and can trigger rate limiting. Deactivate the old plugin once you are happy here."
+msgstr ""
+
+#: src/Admin/Menu.php:77
+#: src/Admin/Menu.php:78
+msgid "Dashboard"
+msgstr ""
+
+#: src/Admin/Menu.php:95
+#: src/Admin/Menu.php:96
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/Menu.php:105
+#: src/Wizard/Wizard.php:74
+msgid "Set up Oh My Cache!"
+msgstr ""
+
+#: src/Admin/Menu.php:106
+#: src/Admin/SettingsPage.php:637
+msgid "Setup"
+msgstr ""
+
+#: src/Admin/Menu.php:236
+msgid "You do not have permission to manage caching."
+msgstr ""
+
+#: src/Admin/Notices.php:54
+msgid "Oh My Cache: purges are queued but the worker is not running."
+msgstr ""
+
+#. translators: %s: WP-CLI command, already escaped.
+#: src/Admin/Notices.php:57
+#, php-format
+msgid "If DISABLE_WP_CRON is set, add a system cron entry such as %s, otherwise queued purges will never happen and pages will stay stale."
+msgstr ""
+
+#. translators: %d: number of failed jobs.
+#: src/Admin/Notices.php:81
+#, php-format
+msgid "Oh My Cache: %d purge job gave up after exhausting its retries."
+msgid_plural "Oh My Cache: %d purge jobs gave up after exhausting their retries."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/Notices.php:92
+msgid "Review them and retry"
+msgstr ""
+
+#: src/Admin/Notices.php:116
+msgid "Oh My Cache: guest pages are cached at the Cloudflare edge, but Cloudflare purging is not working."
+msgstr ""
+
+#. translators: %d: TTL in seconds.
+#: src/Admin/Notices.php:119
+#, php-format
+msgid "Visitors will keep seeing stale HTML for up to %d seconds after every edit. Either fix the Cloudflare connection or set the edge TTL back to zero until you do."
+msgstr ""
+
+#: src/Admin/QueueListTable.php:65
+msgid "ID"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:67
+msgid "Action"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:68
+msgid "Origin"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:69
+msgid "Status"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:70
+msgid "Attempts"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:71
+msgid "Next run"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:72
+msgid "URLs"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:73
+msgid "Outcome"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:82
+msgid "Run now"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:83
+msgid "Retry"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:84
+msgid "Delete"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:97
+msgid "All"
+msgstr ""
+
+#: src/Admin/QueueListTable.php:249
+msgid "Due now"
+msgstr ""
+
+#. translators: %s: human readable time difference.
+#: src/Admin/QueueListTable.php:255
+#, php-format
+msgid "in %s"
+msgstr ""
+
+#. translators: %d: number of URLs.
+#: src/Admin/QueueListTable.php:273
+#, php-format
+msgid "%d URL"
+msgid_plural "%d URLs"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/QueueListTable.php:319
+msgid "Nothing in the queue. Purges are running inline, which is what you want."
+msgstr ""
+
+#: src/Admin/QueuePage.php:87
+msgid "Purge queue"
+msgstr ""
+
+#: src/Admin/QueuePage.php:91
+msgid "An empty queue is the healthy state. Anything listed here either failed or was put off because a driver was slow."
+msgstr ""
+
+#: src/Admin/QueuePage.php:113
+msgid "Search URLs"
+msgstr ""
+
+#: src/Admin/QueuePage.php:144
+msgid "You do not have permission to manage the queue."
+msgstr ""
+
+#. translators: %d: number of jobs.
+#: src/Admin/QueuePage.php:167
+#, php-format
+msgid "%d job is due now."
+msgid_plural "%d jobs are due now."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of jobs.
+#: src/Admin/QueuePage.php:177
+#, php-format
+msgid "%d job re-queued."
+msgid_plural "%d jobs re-queued."
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of jobs.
+#: src/Admin/QueuePage.php:186
+#, php-format
+msgid "%d job deleted."
+msgid_plural "%d jobs deleted."
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Admin/SettingsPage.php:44
+#: src/Admin/SettingsPage.php:291
+#: src/Wizard/Steps/CdnStep.php:46
+msgid "CDN"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:45
+#: src/Admin/SettingsPage.php:415
+msgid "When to purge"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:46
+#: src/Admin/SettingsPage.php:529
+msgid "Dispatch"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:48
+#: src/Admin/SettingsPage.php:614
+msgid "General"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:59
+msgid "Oh My Cache! settings"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:88
+msgid "Saving applies to every tab at once."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:107
+msgid "Settings sections"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:167
+#: src/Admin/SettingsPage.php:179
+msgid "Local cache driver"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:171
+msgid "The page cache running on this server, in front of PHP."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:183
+msgid "None. Only clear the CDN."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:184
+msgid "NGINX FastCGI or proxy cache"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:185
+#: src/Cache/RedisDriver.php:40
+msgid "Redis page cache"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:209
+#: src/Wizard/Steps/DriverStep.php:66
+#: src/Wizard/Steps/DriverStep.php:219
+msgid "NGINX"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:214
+msgid "How to clear it"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:216
+msgid "Delete the cache files directly (fastest)"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:217
+msgid "Ask nginx over HTTP (needs the ngx_cache_purge module)"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:222
+#: src/Wizard/Steps/DriverStep.php:227
+msgid "Cache folder"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:226
+msgid "Cache levels"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:229
+msgid "Must match the levels= value in your fastcgi_cache_path directive. If this is wrong, clearing deletes nothing and reports nothing."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:234
+msgid "Cache key"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:237
+msgid "Must match your fastcgi_cache_key directive."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:242
+msgid "Purge path"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:245
+msgid "Only used by the HTTP method."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:258
+#: src/Wizard/Steps/DriverStep.php:67
+#: src/Wizard/Steps/DriverStep.php:243
+msgid "Redis"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:261
+msgid "Host"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:262
+#: src/Wizard/Steps/DriverStep.php:269
+msgid "Port"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:263
+msgid "Unix socket"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:263
+msgid "Optional. Overrides host and port when set."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:264
+msgid "Database number"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:268
+#: src/Wizard/Steps/DriverStep.php:275
+msgid "Key prefix"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:271
+msgid "Must differ from your object cache prefix. If they overlap, clearing the page cache would delete the object cache with it, and the driver refuses to run rather than let that happen."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:274
+msgid "Connect over TLS"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:276
+msgid "Username"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:277
+msgid "Password"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:295
+msgid "Once the local cache is clear, the copy your CDN holds at the edge is cleared too."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:300
+msgid "Provider"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:303
+msgid "CDN provider"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:325
+msgid "Cache pages at the edge for"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:328
+msgid "Zero means your CDN never caches HTML. Raise it only after a test purge has succeeded: a page held at the edge while purging is broken stays stale for the whole time, and visitors cannot get past it."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:343
+msgid "Clear the Cloudflare cache"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:349
+#: src/Wizard/Steps/CdnStep.php:145
+#: src/Wizard/Steps/CdnStep.php:156
+msgid "API token"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:350
+msgid "Scope it to this zone, with Cache Purge, Cache Rules and Zone Settings permissions. A global API key is never asked for: it covers your whole account and cannot be limited to one site."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:361
+msgid "Not connected yet."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:371
+msgid "Connect Cloudflare"
+msgstr ""
+
+#. translators: %s: Cloudflare plan name.
+#: src/Admin/SettingsPage.php:379
+#: src/Wizard/Steps/CdnStep.php:177
+#, php-format
+msgid "%s plan"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:396
+msgid "Restore the visitor IP address"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:398
+msgid "Without it, every visitor looks like a Cloudflare server. It only trusts requests that genuinely come from Cloudflare. The OH_MY_CACHE_TRUE_CLIENT_IP constant does the same job earlier, before other plugins read the address."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:403
+msgid "Trust X-Forwarded-Proto for HTTPS"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:405
+msgid "Only turn this on to break a redirect loop caused by Cloudflare Flexible SSL. It is unsafe when another proxy in front also sets that header."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:419
+msgid "Which changes clear the cache, and how far the clearing reaches."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:425
+msgid "A post is published or edited"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:426
+msgid "Also clear the homepage"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:427
+msgid "Also clear category, tag, date and author pages"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:428
+msgid "Clear the homepage when a post is deleted"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:429
+msgid "Clear archives when a post is deleted"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:430
+msgid "A comment is approved"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:431
+msgid "A comment is unapproved, spammed or trashed"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:432
+msgid "A media file is edited"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:433
+msgid "A category or tag changes"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:434
+msgid "The theme or customiser changes, which clears everything"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:435
+msgid "A menu changes, which clears everything"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:436
+msgid "Include RSS feeds"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:446
+msgid "Stock and price changes in WooCommerce"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:448
+msgid "WooCommerce writes stock and prices without saving the post, so the events above never see them. Leave this on or a sold-out product keeps showing as in stock."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:456
+msgid "Include sitemaps"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:459
+msgid "Nothing here generates sitemaps, so none are cleared."
+msgstr ""
+
+#. translators: %s: name of the plugin generating sitemaps.
+#: src/Admin/SettingsPage.php:462
+#, php-format
+msgid "Sitemaps here come from %s. A cached one keeps listing the posts you had yesterday."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:469
+msgid "Paged homepage depth"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:472
+msgid "How many of /page/2/, /page/3/ and so on to clear alongside the homepage."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:477
+msgid "Clear everything above"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:480
+msgid "When a single change would clear more URLs than this, clearing everything is faster and cheaper, so that is what happens."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:485
+#: src/Admin/SettingsPage.php:494
+msgid "Post types"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:489
+msgid "Which post types clear anything when they change. A type switched off still clears when the API or WP-CLI asks for it."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:493
+msgid "Clear on change"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:509
+msgid "Always clear these too"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:514
+msgid "Paths"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:518
+msgid "One per line: a path such as /llms.txt, or a full URL. Cleared alongside every purge, which suits a file regenerated whenever content changes."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:519
+msgid "Wildcards are not accepted: they match nothing on NGINX or on Cloudflare below Enterprise, while looking like they worked."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:533
+msgid "Caches clear immediately by default. The queue is the safety net for whatever does not answer in time, not the normal path."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:540
+msgid "Mode"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:542
+msgid "Immediately, falling back to the queue"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:543
+msgid "Always through the queue"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:550
+msgid "Time budget"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:553
+msgid "Seconds a publish may spend clearing caches before the rest is queued."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:558
+msgid "Clear the CDN immediately on visitor actions too"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:560
+msgid "Off by default, so a visitor posting a comment never waits on an API call. Your local cache always clears immediately either way, because it costs microseconds."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:565
+msgid "Failures before pausing a driver"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:572
+msgid "Pause duration"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:575
+msgid "Seconds a repeatedly failing driver goes straight to the queue before being tried again."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:588
+msgid "Attempts before giving up"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:589
+msgid "Jobs per batch"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:590
+msgid "Worker time budget"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:594
+msgid "How the queue runs"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:596
+msgid "WP-Cron only"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:597
+msgid "At the end of each request"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:598
+msgid "Both"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:601
+msgid "If DISABLE_WP_CRON is set and you have no system cron entry, WP-Cron alone means queued work never runs."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:604
+msgid "Keep finished jobs for"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:604
+msgid "Minutes."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:605
+msgid "Keep failed jobs for"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:605
+msgid "Days."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:617
+msgid "Clear caches automatically"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:618
+msgid "Show the toolbar menu"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:622
+msgid "Preload concurrency"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:625
+msgid "How many pages to request at once when warming the cache from your sitemap."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:630
+msgid "Delete all data when the plugin is uninstalled"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:632
+msgid "Off by default. Cloudflare changes are never reverted on uninstall."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:641
+msgid "Run the setup guide again"
+msgstr ""
+
+#. translators: %s: comma separated list of the lines that were dropped.
+#: src/Admin/SettingsPage.php:784
+#, php-format
+msgid "Not saved: %s. A path cannot contain a wildcard."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:822
+msgid "You do not have permission to change credentials."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:830
+msgid "Stored credential deleted."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:855
+msgid "Credentials saved."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:882
+msgid "set by an environment variable, never stored in the database"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:883
+msgid "set by a constant in wp-config.php, never stored in the database"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:893
+msgid "not set"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:899
+msgid "Save credential"
+msgstr ""
+
+#. translators: %s: environment variable name.
+#: src/Admin/SettingsPage.php:907
+#, php-format
+msgid "Leave blank to keep the current value. Better still, set %s in your environment: it then never touches the database, so it cannot end up in a backup or a staging copy."
+msgstr ""
+
+#: src/Admin/SettingsPage.php:936
+msgid "These credentials are still stored in the database even though your environment now supplies them. The environment wins, so the stored copies are dead weight sitting in your backups."
+msgstr ""
+
+#. translators: %s: credential key.
+#: src/Admin/SettingsPage.php:949
+#, php-format
+msgid "Delete stored %s"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:970
+msgid "Connection"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:972
+msgid "Test connection"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:988
+#: src/Wizard/Steps/RulesStep.php:334
+msgid "Enabled"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:1069
+msgid "Dispatch override"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:1071
+msgid "Use the global setting"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:1072
+msgid "Always clear immediately"
+msgstr ""
+
+#: src/Admin/SettingsPage.php:1073
+msgid "Always queue"
+msgstr ""
+
+#. translators: %d: number of queued jobs.
+#: src/Api/PurgeTicket.php:155
+#, php-format
+msgid "%d job queued"
+msgid_plural "%d jobs queued"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Api/PurgeTicket.php:160
+#: src/Cache/PurgeResult.php:269
+msgid "nothing to do"
+msgstr ""
+
+#. translators: %s: driver label.
+#: src/Cache/AbstractDriver.php:61
+#, php-format
+msgid "%s cannot purge by pattern."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:88
+#: src/Cloudflare/Client.php:272
+msgid "No Cloudflare credentials are configured."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:89
+msgid "Run the setup wizard, or define OH_MY_CACHE_CF_API_TOKEN."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:95
+msgid "No Cloudflare zone has been resolved for this site."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:96
+msgid "Run the setup wizard, or define OH_MY_CACHE_CF_ZONE_ID."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:105
+msgid "WP_HTTP_BLOCK_EXTERNAL is on and api.cloudflare.com is not in WP_ACCESSIBLE_HOSTS."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:106
+msgid "Add api.cloudflare.com to WP_ACCESSIBLE_HOSTS in wp-config.php."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:127
+#: src/Cache/CloudflareDriver.php:150
+msgid "No Cloudflare zone is configured."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:158
+msgid "A full Cloudflare purge already ran moments ago; skipping."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:167
+msgid "Cloudflare cache purged."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:180
+msgid "Cloudflare only supports prefix purging on Enterprise plans."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:192
+msgid "Prefix purged."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:258
+msgid "Not in this Cloudflare zone, or not purgeable."
+msgstr ""
+
+#: src/Cache/CloudflareDriver.php:262
+msgid "Cloudflare does not recognise these URLs as belonging to the configured zone. Check that the hostname is proxied (orange cloud)."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:28
+msgid "NGINX FastCGI cache"
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:52
+msgid "No NGINX cache directory is configured."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:53
+msgid "Set it in Settings, or define OH_MY_CACHE_NGINX_PATH."
+msgstr ""
+
+#. translators: %s: filesystem path.
+#: src/Cache/NginxFastCgiDriver.php:61
+#, php-format
+msgid "The NGINX cache directory %s does not exist."
+msgstr ""
+
+#. translators: %s: filesystem path.
+#: src/Cache/NginxFastCgiDriver.php:85
+#, php-format
+msgid "The NGINX cache directory %s is not writable by PHP."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:88
+msgid "nginx usually owns these files as www-data while PHP-FPM runs as another user. Align the users, or switch this driver to HTTP purge mode."
+msgstr ""
+
+#. translators: %d: number of cache files removed.
+#: src/Cache/NginxFastCgiDriver.php:140
+#, php-format
+msgid "%d cache file removed"
+msgid_plural "%d cache files removed"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Cache/NginxFastCgiDriver.php:158
+msgid "Could not derive a cache path for this URL."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:172
+#: src/Cache/NginxFastCgiDriver.php:231
+#: src/Cache/RedisDriver.php:121
+msgid "Not cached."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:182
+msgid "The cache file exists but PHP could not delete it (check ownership)."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:195
+msgid "Could not build a purge URL."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:240
+msgid "nginx refused the purge request. The ngx_cache_purge module may be missing, or this server is not in its allow list."
+msgstr ""
+
+#. translators: %d: HTTP status code.
+#: src/Cache/NginxFastCgiDriver.php:249
+#, php-format
+msgid "nginx answered HTTP %d."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:376
+msgid "No cache directory is configured."
+msgstr ""
+
+#. translators: %s: filesystem path.
+#: src/Cache/NginxFastCgiDriver.php:384
+#, php-format
+msgid "The cache directory %s does not resolve to a real path."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:392
+msgid "Refusing to empty the filesystem root."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:400
+msgid "Refusing to empty the WordPress root."
+msgstr ""
+
+#: src/Cache/NginxFastCgiDriver.php:405
+msgid "Refusing to empty a directory that contains WordPress."
+msgstr ""
+
+#. translators: %d: number of URLs purged.
+#: src/Cache/PurgeResult.php:242
+#, php-format
+msgid "%d purged"
+msgid_plural "%d purged"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of URLs that were not cached.
+#: src/Cache/PurgeResult.php:250
+#, php-format
+msgid "%d not cached"
+msgid_plural "%d not cached"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: %d: number of URLs that failed to purge.
+#: src/Cache/PurgeResult.php:258
+#, php-format
+msgid "%d failed"
+msgid_plural "%d failed"
+msgstr[0] ""
+msgstr[1] ""
+
+#. translators: 1: installed phpredis version or "none", 2: minimum version.
+#. translators: 1: installed version or "none", 2: minimum required version.
+#: src/Cache/Redis/Connection.php:70
+#: src/Cache/RedisDriver.php:59
+#, php-format
+msgid "phpredis %1$s is installed; %2$s or newer is required."
+msgstr ""
+
+#: src/Cache/Redis/Connection.php:71
+#: src/Cache/RedisDriver.php:60
+msgid "none"
+msgstr ""
+
+#: src/Cache/Redis/Connection.php:106
+msgid "Redis refused the connection."
+msgstr ""
+
+#: src/Cache/RedisDriver.php:63
+msgid "Install or upgrade the redis PHP extension. This plugin does not bundle a pure-PHP fallback."
+msgstr ""
+
+#: src/Cache/RedisDriver.php:98
+msgid "Could not derive a cache key for this URL."
+msgstr ""
+
+#. translators: %d: number of keys deleted so far.
+#: src/Cache/RedisDriver.php:192
+#, php-format
+msgid "%d keys deleted so far; continuing in a follow-up job."
+msgstr ""
+
+#. translators: %d: number of Redis keys deleted.
+#: src/Cache/RedisDriver.php:213
+#, php-format
+msgid "%d key deleted"
+msgid_plural "%d keys deleted"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Cache/RedisDriver.php:302
+msgid "The Redis key prefix is empty, which would let a purge delete every key in the database. Set a prefix that matches your nginx srcache configuration."
+msgstr ""
+
+#. translators: 1: configured page cache prefix, 2: constant name, 3: object cache prefix.
+#: src/Cache/RedisDriver.php:320
+#, php-format
+msgid "The page cache prefix \"%1$s\" overlaps %2$s (\"%3$s\"). Purging would delete object cache keys too. Give the page cache its own prefix."
+msgstr ""
+
+#. translators: %d: Redis database index.
+#: src/Cache/RedisDriver.php:331
+#, php-format
+msgid "The page cache and the object cache are both on Redis database %d. Move one of them to a different database."
+msgstr ""
+
+#: src/Cdn/Providers.php:47
+msgid "None, or one this plugin does not manage"
+msgstr ""
+
+#. translators: %d: HTTP status code.
+#: src/Cloudflare/Response.php:110
+#, php-format
+msgid "Cloudflare answered HTTP %d with no error detail."
+msgstr ""
+
+#: src/Purge/Sitemaps.php:88
+msgid "none found"
+msgstr ""
+
+#: src/Purge/Sitemaps.php:92
+msgid "WordPress core"
+msgstr ""
+
+#: src/Queue/JobStatus.php:29
+msgid "Pending"
+msgstr ""
+
+#: src/Queue/JobStatus.php:30
+msgid "Running"
+msgstr ""
+
+#: src/Queue/JobStatus.php:31
+msgid "Done"
+msgstr ""
+
+#: src/Queue/JobStatus.php:32
+msgid "Dead"
+msgstr ""
+
+#: src/Queue/Scheduler.php:54
+msgid "Every minute (Oh My Cache)"
+msgstr ""
+
+#. translators: %s: driver id.
+#: src/Queue/Worker.php:119
+#, php-format
+msgid "Unknown driver \"%s\"; it was removed or its plugin is inactive."
+msgstr ""
+
+#. translators: %s: job action.
+#: src/Queue/Worker.php:155
+#, php-format
+msgid "Unknown system action \"%s\"."
+msgstr ""
+
+#: src/Queue/Worker.php:166
+msgid "The plugin is not fully loaded."
+msgstr ""
+
+#. translators: %d: number of URLs requested.
+#: src/Queue/Worker.php:176
+#, php-format
+msgid "%d URL warmed"
+msgid_plural "%d URLs warmed"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/Wizard/Steps/AbstractStep.php:32
+msgid "There is nothing to undo here."
+msgstr ""
+
+#: src/Wizard/Steps/AbstractStep.php:36
+msgid "Test and continue"
+msgstr ""
+
+#: src/Wizard/Steps/AbstractStep.php:101
+msgid "Before continuing, this is checked:"
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:65
+msgid "A CDN keeps another copy of your pages closer to your visitors. When you publish something, that copy has to be cleared too, or people keep seeing the old version."
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:70
+#: src/Wizard/Steps/CdnStep.php:71
+msgid "Your CDN"
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:108
+msgid "No CDN to clear. Only your server cache will be looked after."
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:128
+msgid "Cloudflare disconnected."
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:149
+msgid "already set by an environment variable, and never stored in the database"
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:150
+msgid "already set in wp-config.php, and never stored in the database"
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:160
+msgid "paste your token here"
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:162
+msgid "In Cloudflare, go to My Profile, API Tokens, Create Token. Give it permission to purge cache and edit cache rules and zone settings for this site only."
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:163
+msgid "We never ask for a global API key. That one grants access to your whole account and cannot be limited to a single site."
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:172
+msgid "Site found"
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:188
+msgid "The token is valid and has not expired"
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:189
+msgid "It can purge cache and edit rules for this site"
+msgstr ""
+
+#. translators: %s: site hostname.
+#: src/Wizard/Steps/CdnStep.php:192
+#, php-format
+msgid "Cloudflare recognises %s as one of your sites"
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:213
+msgid "Paste your Cloudflare API token to continue, or choose \"None\" above."
+msgstr ""
+
+#. translators: %s: error message from Cloudflare.
+#: src/Wizard/Steps/CdnStep.php:222
+#, php-format
+msgid "Cloudflare rejected that token: %s"
+msgstr ""
+
+#. translators: %s: comma separated permission names.
+#: src/Wizard/Steps/CdnStep.php:244
+#, php-format
+msgid "That token is valid but cannot do everything we need. Missing: %s. Edit the token in Cloudflare and try again."
+msgstr ""
+
+#. translators: %s: site hostname.
+#: src/Wizard/Steps/CdnStep.php:260
+#, php-format
+msgid "The token works, but Cloudflare does not list %s among the sites it can see. Check the token covers this site."
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:274
+msgid "Free plan"
+msgstr ""
+
+#: src/Wizard/Steps/CdnStep.php:276
+msgid "Cloudflare allows ten cache rules on this plan. The next step adds two."
+msgstr ""
+
+#. translators: %s: zone name.
+#: src/Wizard/Steps/CdnStep.php:283
+#, php-format
+msgid "Connected to %s."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:58
+msgid "Your server probably keeps a copy of each page so it does not have to build it again. Tell us which one you use, and we will clear it whenever something changes."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:63
+#: src/Wizard/Steps/DriverStep.php:64
+msgid "Cache on this server"
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:66
+msgid "The most common setup on a VPS or managed WordPress host."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:67
+msgid "Pages stored in Redis, usually alongside nginx srcache."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:68
+msgid "Neither"
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:68
+msgid "Nothing caches pages here. We will only clear your CDN."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:78
+msgid "NGINX: the cache folder exists and PHP can write to it"
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:79
+msgid "Redis: the server answers, and its key prefix will not collide with your object cache"
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:134
+msgid "Local cache switched off."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:148
+msgid "No local cache to clear. We will look after your CDN instead."
+msgstr ""
+
+#. translators: %s: filesystem path.
+#: src/Wizard/Steps/DriverStep.php:164
+#, php-format
+msgid "NGINX cache found at %s and it is writable."
+msgstr ""
+
+#. translators: %s: connection error.
+#: src/Wizard/Steps/DriverStep.php:183
+#, php-format
+msgid "Redis did not answer: %s"
+msgstr ""
+
+#. translators: 1: Redis server version, 2: key prefix.
+#: src/Wizard/Steps/DriverStep.php:194
+#, php-format
+msgid "Connected to Redis %1$s. Clearing will only touch keys starting with \"%2$s\"."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:232
+msgid "We could not find one in the usual places. Your host can tell you where it is."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:233
+msgid "Found automatically. We will confirm PHP can write to it when you continue."
+msgstr ""
+
+#. translators: 1: installed version or "not installed", 2: minimum version.
+#: src/Wizard/Steps/DriverStep.php:251
+#, php-format
+msgid "phpredis %1$s. Redis needs version %2$s or newer, and this plugin does not bundle a slower pure-PHP replacement. Ask your host to install or update it."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:252
+msgid "is not installed"
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:263
+msgid "Server address"
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:277
+msgid "Identifies your cached pages. We check it cannot collide with your object cache, so clearing pages never wipes anything else."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:284
+msgid "A username and password, if your Redis needs them, can be added afterwards under Settings, Driver."
+msgstr ""
+
+#: src/Wizard/Steps/DriverStep.php:300
+msgid "Bring over the settings from Nginx Helper. Its own settings are left untouched, so you can switch back."
+msgstr ""
+
+#: src/Wizard/Steps/FinishStep.php:34
+msgid "Test"
+msgstr ""
+
+#: src/Wizard/Steps/FinishStep.php:42
+msgid "Run the test"
+msgstr ""
+
+#: src/Wizard/Steps/FinishStep.php:47
+msgid "Last step. This clears your homepage for real and reports what each driver did."
+msgstr ""
+
+#: src/Wizard/Steps/FinishStep.php:69
+msgid "A test purge has already succeeded here, so the edge cache time can safely be raised on the Caching tab or in Settings."
+msgstr ""
+
+#: src/Wizard/Steps/FinishStep.php:103
+msgid "queued"
+msgstr ""
+
+#: src/Wizard/Steps/FinishStep.php:104
+msgid "will run in the background"
+msgstr ""
+
+#: src/Wizard/Steps/FinishStep.php:111
+#: src/Wizard/Steps/RulesStep.php:141
+#: src/Wizard/Steps/RulesStep.php:197
+msgid "failed"
+msgstr ""
+
+#: src/Wizard/Steps/FinishStep.php:111
+msgid "worked"
+msgstr ""
+
+#: src/Wizard/Steps/FinishStep.php:123
+msgid "Nothing is switched on to clear. Go back to the Driver tab and pick your cache."
+msgstr ""
+
+#. translators: %s: comma separated driver names.
+#: src/Wizard/Steps/FinishStep.php:132
+#, php-format
+msgid "Clearing failed on: %s. Fix that before raising the edge cache time."
+msgstr ""
+
+#: src/Wizard/Steps/FinishStep.php:142
+msgid "Everything cleared. You are set up."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:36
+msgid "Caching"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:59
+msgid "Apply and continue"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:66
+msgid "Connect Cloudflare on the previous tab to set this up, or skip it."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:73
+msgid "Choose how much work Cloudflare does for you. All of this is optional and every part can be undone from this screen later."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:80
+msgid "Serve pages from Cloudflare"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:81
+msgid "Visitors who are not logged in get pages straight from Cloudflare instead of waiting for your server. Anyone with a login, comment or shopping cart cookie is excluded, so nobody ever sees somebody else's page."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:87
+msgid "Keep images, CSS and fonts longer"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:88
+msgid "These rarely change, so Cloudflare and your visitors' browsers can hold on to them for a year. WordPress already puts a version number in the address, so an updated file arrives under a new one."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:94
+msgid "Apply recommended Cloudflare settings"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:95
+msgid "A set of defaults that suit WordPress: newer connection protocols, sensible TLS, Rocket Loader off. Your current values are saved first, so this can be undone."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:112
+msgid "Connect Cloudflare first, or skip this step."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:119
+#: src/Wizard/Steps/RulesStep.php:121
+msgid "Pages for visitors"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:125
+#: src/Wizard/Steps/RulesStep.php:127
+msgid "Images, CSS and fonts"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:140
+msgid "not on your plan"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:154
+msgid "Cloudflare is set up."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:161
+msgid "No Cloudflare site is connected."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:177
+msgid "Rules removed and your previous Cloudflare settings restored."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:204
+msgid "on"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:225
+msgid "turned off"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:261
+msgid "How long Cloudflare holds a page"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:267
+msgid "Seconds"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:269
+msgid "seconds"
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:272
+msgid "A test purge has already succeeded, so this can safely be raised."
+msgstr ""
+
+#: src/Wizard/Steps/RulesStep.php:273
+msgid "Leave this at zero for now. The last step runs a real purge, and you can raise it once that succeeds. A page held at the edge while purging is broken stays stale for the whole time, and visitors cannot get past it."
+msgstr ""
+
+#. translators: %d: number of cache rules already on the zone.
+#: src/Wizard/Steps/RulesStep.php:303
+#, php-format
+msgid "This site already has %d cache rule(s) in Cloudflare. Applying again updates ours in place rather than adding duplicates."
+msgstr ""
+
+#: src/Wizard/Wizard.php:78
+msgid "Four short steps. Each one is checked before you move on, so nothing here quietly fails later."
+msgstr ""
+
+#: src/Wizard/Wizard.php:102
+msgid "Skip this step"
+msgstr ""
+
+#: src/Wizard/Wizard.php:109
+msgid "Undo this step"
+msgstr ""
+
+#: src/Wizard/Wizard.php:126
+msgid "Setup steps"
+msgstr ""
+
+#: src/Wizard/Wizard.php:199
+msgid "You do not have permission to run setup."
+msgstr ""
