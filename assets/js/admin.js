@@ -12,11 +12,11 @@
 	 * @param {string} id Tab id.
 	 */
 	function showTab( id ) {
-		var panels = document.querySelectorAll( '[data-omc-panel]' );
+		var panels = document.querySelectorAll( '[data-oh-my-cache-panel]' );
 		var found = false;
 
 		panels.forEach( function ( panel ) {
-			var match = panel.getAttribute( 'data-omc-panel' ) === id;
+			var match = panel.getAttribute( 'data-oh-my-cache-panel' ) === id;
 			panel.hidden = ! match;
 			found = found || match;
 		} );
@@ -25,8 +25,8 @@
 			return;
 		}
 
-		document.querySelectorAll( '[data-omc-tab]' ).forEach( function ( tab ) {
-			tab.classList.toggle( 'nav-tab-active', tab.getAttribute( 'data-omc-tab' ) === id );
+		document.querySelectorAll( '[data-oh-my-cache-tab]' ).forEach( function ( tab ) {
+			tab.classList.toggle( 'nav-tab-active', tab.getAttribute( 'data-oh-my-cache-tab' ) === id );
 		} );
 
 		// Keep the address bar honest so a reload or a bookmark lands on the same tab.
@@ -41,11 +41,11 @@
 	 * Show only the block belonging to the selected local driver.
 	 */
 	function syncDriverBlocks() {
-		var checked = document.querySelector( '.omc-driver-choice:checked' );
+		var checked = document.querySelector( '.oh-my-cache-driver-choice:checked' );
 		var value = checked ? checked.value : 'none';
 
-		document.querySelectorAll( '[data-omc-driver-block]' ).forEach( function ( block ) {
-			block.hidden = block.getAttribute( 'data-omc-driver-block' ) !== value;
+		document.querySelectorAll( '[data-oh-my-cache-driver-block]' ).forEach( function ( block ) {
+			block.hidden = block.getAttribute( 'data-oh-my-cache-driver-block' ) !== value;
 		} );
 	}
 
@@ -53,11 +53,11 @@
 	 * Show only the block belonging to the selected CDN provider.
 	 */
 	function syncCdnBlocks() {
-		var checked = document.querySelector( '.omc-cdn-choice:checked' );
+		var checked = document.querySelector( '.oh-my-cache-cdn-choice:checked' );
 		var value = checked ? checked.value : 'cloudflare';
 
-		document.querySelectorAll( '[data-omc-cdn-block]' ).forEach( function ( block ) {
-			block.hidden = block.getAttribute( 'data-omc-cdn-block' ) !== value;
+		document.querySelectorAll( '[data-oh-my-cache-cdn-block]' ).forEach( function ( block ) {
+			block.hidden = block.getAttribute( 'data-oh-my-cache-cdn-block' ) !== value;
 		} );
 	}
 
@@ -68,17 +68,17 @@
 	 */
 	function testDriver( button ) {
 		var driver = button.getAttribute( 'data-driver' );
-		var output = button.parentNode.querySelector( '.omc-test-result' );
+		var output = button.parentNode.querySelector( '.oh-my-cache-test-result' );
 
 		if ( ! output ) {
 			output = document.createElement( 'span' );
-			output.className = 'omc-test-result';
+			output.className = 'oh-my-cache-test-result';
 			button.parentNode.appendChild( output );
 		}
 
 		button.disabled = true;
 		output.textContent = '…';
-		output.className = 'omc-test-result';
+		output.className = 'oh-my-cache-test-result';
 
 		var body = new URLSearchParams();
 		body.append( 'action', 'oh_my_cache_test_driver' );
@@ -101,10 +101,10 @@
 
 			// textContent, never innerHTML: this string can originate from a remote API.
 			output.textContent = ' ' + message;
-			output.className = 'omc-test-result ' + ( payload && payload.success ? 'is-ok' : 'is-missing' );
+			output.className = 'oh-my-cache-test-result ' + ( payload && payload.success ? 'is-ok' : 'is-missing' );
 		} ).catch( function () {
 			output.textContent = ' Request failed.';
-			output.className = 'omc-test-result is-missing';
+			output.className = 'oh-my-cache-test-result is-missing';
 		} ).finally( function () {
 			button.disabled = false;
 		} );
@@ -117,13 +117,13 @@
 			return;
 		}
 
-		var tab = target.closest( '[data-omc-tab]' );
+		var tab = target.closest( '[data-oh-my-cache-tab]' );
 
 		if ( tab ) {
-			var id = tab.getAttribute( 'data-omc-tab' );
+			var id = tab.getAttribute( 'data-oh-my-cache-tab' );
 
 			// Only intercept when the panel is on this page; otherwise let the link navigate.
-			if ( document.querySelector( '[data-omc-panel="' + id + '"]' ) ) {
+			if ( document.querySelector( '[data-oh-my-cache-panel="' + id + '"]' ) ) {
 				event.preventDefault();
 				showTab( id );
 			}
@@ -131,7 +131,7 @@
 			return;
 		}
 
-		if ( target.matches( '.omc-test' ) ) {
+		if ( target.matches( '.oh-my-cache-test' ) ) {
 			event.preventDefault();
 			testDriver( target );
 			return;
@@ -149,11 +149,11 @@
 			return;
 		}
 
-		if ( event.target.matches( '.omc-driver-choice' ) ) {
+		if ( event.target.matches( '.oh-my-cache-driver-choice' ) ) {
 			syncDriverBlocks();
 		}
 
-		if ( event.target.matches( '.omc-cdn-choice' ) ) {
+		if ( event.target.matches( '.oh-my-cache-cdn-choice' ) ) {
 			syncCdnBlocks();
 		}
 	} );

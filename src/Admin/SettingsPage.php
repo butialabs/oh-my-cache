@@ -55,7 +55,7 @@ final class SettingsPage {
 		$settings = Options::all();
 		$active   = $this->active_tab();
 
-		echo '<div class="wrap omc">';
+		echo '<div class="wrap oh-my-cache">';
 		printf( '<h1>%s</h1>', esc_html__( 'Oh My Cache! settings', 'oh-my-cache' ) );
 
 		settings_errors();
@@ -68,12 +68,12 @@ final class SettingsPage {
 		 * inputs reference it with the `form` attribute. That lets a password field sit visually
 		 * inside the Redis block while submitting somewhere else entirely.
 		 */
-		echo '<form method="post" id="omc-secrets-form">';
+		echo '<form method="post" id="oh-my-cache-secrets-form">';
 		wp_nonce_field( self::SECRETS_ACTION );
-		echo '<input type="hidden" name="omc_secrets" value="1" />';
+		echo '<input type="hidden" name="oh_my_cache_secrets_form" value="1" />';
 		echo '</form>';
 
-		echo '<form method="post" action="options.php" class="omc-settings-form">';
+		echo '<form method="post" action="options.php" class="oh-my-cache-settings-form">';
 		settings_fields( 'oh_my_cache' );
 
 		$this->panel( 'driver', $active, fn () => $this->tab_driver( $settings ) );
@@ -109,7 +109,7 @@ final class SettingsPage {
 
 		foreach ( $this->tabs() as $id => $label ) {
 			printf(
-				'<a href="%s" class="nav-tab%s" data-omc-tab="%s">%s</a>',
+				'<a href="%s" class="nav-tab%s" data-oh-my-cache-tab="%s">%s</a>',
 				esc_url(
 					add_query_arg(
 						[
@@ -137,7 +137,7 @@ final class SettingsPage {
 	 */
 	private function panel( string $id, string $active, callable $content ): void {
 		printf(
-			'<div class="omc-panel" data-omc-panel="%s"%s>',
+			'<div class="oh-my-cache-panel" data-oh-my-cache-panel="%s"%s>',
 			esc_attr( $id ),
 			$id === $active ? '' : ' hidden'
 		);
@@ -187,7 +187,7 @@ final class SettingsPage {
 
 		foreach ( $choices as $value => $label ) {
 			printf(
-				'<label><input type="radio" name="%s" value="%s" %s class="omc-driver-choice" /> %s</label><br />',
+				'<label><input type="radio" name="%s" value="%s" %s class="oh-my-cache-driver-choice" /> %s</label><br />',
 				esc_attr( $this->field_name( 'local_driver' ) ),
 				esc_attr( $value ),
 				checked( $current, $value, false ),
@@ -203,7 +203,7 @@ final class SettingsPage {
 		 * paint, with no flash of the wrong driver's settings while JavaScript loads.
 		 */
 		printf(
-			'<div class="omc-driver-block" data-omc-driver-block="nginx"%s>',
+			'<div class="oh-my-cache-driver-block" data-oh-my-cache-driver-block="nginx"%s>',
 			'nginx' === $current ? '' : ' hidden'
 		);
 		printf( '<h3>%s</h3>', esc_html__( 'NGINX', 'oh-my-cache' ) );
@@ -252,7 +252,7 @@ final class SettingsPage {
 
 		// Redis, with its credentials in the same block.
 		printf(
-			'<div class="omc-driver-block" data-omc-driver-block="redis"%s>',
+			'<div class="oh-my-cache-driver-block" data-oh-my-cache-driver-block="redis"%s>',
 			'redis' === $current ? '' : ' hidden'
 		);
 		printf( '<h3>%s</h3>', esc_html__( 'Redis', 'oh-my-cache' ) );
@@ -305,7 +305,7 @@ final class SettingsPage {
 
 		foreach ( Providers::all() as $id => $label ) {
 			printf(
-				'<label><input type="radio" name="%s" value="%s" %s class="omc-cdn-choice" /> %s</label><br />',
+				'<label><input type="radio" name="%s" value="%s" %s class="oh-my-cache-cdn-choice" /> %s</label><br />',
 				esc_attr( $this->field_name( 'cdn[provider]' ) ),
 				esc_attr( (string) $id ),
 				checked( $provider, (string) $id, false ),
@@ -332,7 +332,7 @@ final class SettingsPage {
 
 		// Hidden server-side too, so the right block is there on first paint.
 		printf(
-			'<div class="omc-cdn-block" data-omc-cdn-block="cloudflare"%s>',
+			'<div class="oh-my-cache-cdn-block" data-oh-my-cache-cdn-block="cloudflare"%s>',
 			'cloudflare' === $provider ? '' : ' hidden'
 		);
 		printf( '<h3>%s</h3>', esc_html__( 'Cloudflare', 'oh-my-cache' ) );
@@ -510,7 +510,7 @@ final class SettingsPage {
 		echo '<table class="form-table" role="presentation"><tbody>';
 
 		printf(
-			'<tr><th scope="row"><label for="omc-custom-urls">%s</label></th><td><textarea id="omc-custom-urls" name="%s" rows="5" class="large-text code" placeholder="%s">%s</textarea><p class="description">%s</p><p class="description">%s</p></td></tr>',
+			'<tr><th scope="row"><label for="oh-my-cache-custom-urls">%s</label></th><td><textarea id="oh-my-cache-custom-urls" name="%s" rows="5" class="large-text code" placeholder="%s">%s</textarea><p class="description">%s</p><p class="description">%s</p></td></tr>',
 			esc_html__( 'Paths', 'oh-my-cache' ),
 			esc_attr( $this->field_name( 'custom_urls' ) ),
 			esc_attr( "/llms.txt\n/sitemap.xml" ),
@@ -778,7 +778,7 @@ final class SettingsPage {
 			if ( $parsed['rejected'] ) {
 				add_settings_error(
 					'oh_my_cache',
-					'omc_custom_urls_rejected',
+					'oh_my_cache_custom_urls_rejected',
 					sprintf(
 						/* translators: %s: comma separated list of the lines that were dropped. */
 						__( 'Not saved: %s. A path cannot contain a wildcard.', 'oh-my-cache' ),
@@ -812,7 +812,7 @@ final class SettingsPage {
 	 * Save credentials, honouring the environment.
 	 */
 	private function handle_secrets(): void {
-		if ( empty( $_POST['omc_secrets'] ) ) {
+		if ( empty( $_POST['oh_my_cache_secrets_form'] ) ) {
 			return;
 		}
 
@@ -827,7 +827,7 @@ final class SettingsPage {
 
 			if ( in_array( $key, Options::SECRET_KEYS, true ) ) {
 				Options::forget_stored_secret( $key );
-				add_settings_error( 'oh_my_cache', 'omc_secret_forgotten', __( 'Stored credential deleted.', 'oh-my-cache' ), 'success' );
+				add_settings_error( 'oh_my_cache', 'oh_my_cache_secret_forgotten', __( 'Stored credential deleted.', 'oh-my-cache' ), 'success' );
 			}
 
 			return;
@@ -852,7 +852,7 @@ final class SettingsPage {
 
 		if ( $incoming ) {
 			Options::save_secrets( $incoming );
-			add_settings_error( 'oh_my_cache', 'omc_secret_saved', __( 'Credentials saved.', 'oh-my-cache' ), 'success' );
+			add_settings_error( 'oh_my_cache', 'oh_my_cache_secret_saved', __( 'Credentials saved.', 'oh-my-cache' ), 'success' );
 		}
 	}
 
@@ -885,7 +885,7 @@ final class SettingsPage {
 			);
 		} else {
 			printf(
-				'<input type="password" form="omc-secrets-form" name="%s" value="" autocomplete="new-password" class="regular-text" placeholder="%s" /> ',
+				'<input type="password" form="oh-my-cache-secrets-form" name="%s" value="" autocomplete="new-password" class="regular-text" placeholder="%s" /> ',
 				esc_attr( $key ),
 				esc_attr(
 					'database' === $source
@@ -895,7 +895,7 @@ final class SettingsPage {
 			);
 
 			printf(
-				'<button type="submit" form="omc-secrets-form" class="button">%s</button>',
+				'<button type="submit" form="oh-my-cache-secrets-form" class="button">%s</button>',
 				esc_html__( 'Save credential', 'oh-my-cache' )
 			);
 
@@ -939,7 +939,7 @@ final class SettingsPage {
 		foreach ( $orphans as $key ) {
 			echo '<form method="post" style="display:inline-block;margin-right:8px">';
 			wp_nonce_field( self::SECRETS_ACTION );
-			echo '<input type="hidden" name="omc_secrets" value="1" />';
+			echo '<input type="hidden" name="oh_my_cache_secrets_form" value="1" />';
 			printf( '<input type="hidden" name="forget" value="%s" />', esc_attr( $key ) );
 			printf(
 				'<button type="submit" class="button button-small">%s</button>',
@@ -966,7 +966,7 @@ final class SettingsPage {
 	 */
 	private function test_button( string $driver ): void {
 		printf(
-			'<tr><th scope="row">%s</th><td><button type="button" class="button omc-test" data-driver="%s">%s</button> <span class="omc-test-result"></span></td></tr>',
+			'<tr><th scope="row">%s</th><td><button type="button" class="button oh-my-cache-test" data-driver="%s">%s</button> <span class="oh-my-cache-test-result"></span></td></tr>',
 			esc_html__( 'Connection', 'oh-my-cache' ),
 			esc_attr( $driver ),
 			esc_html__( 'Test connection', 'oh-my-cache' )

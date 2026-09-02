@@ -49,7 +49,7 @@ final class AdminBar {
 		$title = __( 'Oh My Cache!', 'oh-my-cache' );
 
 		if ( $depth > 0 ) {
-			$title .= sprintf( ' <span class="omc-badge">%d</span>', $depth );
+			$title .= sprintf( ' <span class="oh-my-cache-badge">%d</span>', $depth );
 		}
 
 		$bar->add_node(
@@ -129,7 +129,7 @@ final class AdminBar {
 
 		$back = wp_get_referer();
 
-		wp_safe_redirect( add_query_arg( 'omc-purged', '1', $back ?: home_url( '/' ) ) );
+		wp_safe_redirect( add_query_arg( 'oh-my-cache-purged', '1', $back ?: home_url( '/' ) ) );
 		exit;
 	}
 

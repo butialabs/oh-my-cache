@@ -26,7 +26,7 @@ final class QueuePage {
 	 * The nonce action WP_List_Table generates, derived from the `plural` argument passed to
 	 * QueueListTable's constructor. Keep the two in step.
 	 */
-	public const BULK_NONCE = 'bulk-jobs';
+	public const BULK_NONCE = 'bulk-oh-my-cache-jobs';
 
 	public function __construct( private readonly Container $container ) {}
 
@@ -57,7 +57,7 @@ final class QueuePage {
 
 		$args = [
 			'page'       => Menu::SLUG_QUEUE,
-			'omc-notice' => $notice,
+			'oh-my-cache-notice' => $notice,
 		];
 
 		// Which view the operator was looking at, so the redirect returns them to it.
@@ -78,12 +78,12 @@ final class QueuePage {
 
 		// A message we put in the URL ourselves after a redirect; displayed, never acted on.
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$notice = isset( $_GET['omc-notice'] ) ? sanitize_text_field( wp_unslash( $_GET['omc-notice'] ) ) : '';
+		$notice = isset( $_GET['oh-my-cache-notice'] ) ? sanitize_text_field( wp_unslash( $_GET['oh-my-cache-notice'] ) ) : '';
 
 		$table = new QueueListTable( $repository );
 		$table->prepare_items();
 
-		echo '<div class="wrap omc">';
+		echo '<div class="wrap oh-my-cache">';
 		printf( '<h1>%s</h1>', esc_html__( 'Purge queue', 'oh-my-cache' ) );
 
 		printf(
@@ -110,7 +110,7 @@ final class QueuePage {
 		}
 
 		$table->views();
-		$table->search_box( __( 'Search URLs', 'oh-my-cache' ), 'omc-search' );
+		$table->search_box( __( 'Search URLs', 'oh-my-cache' ), 'oh-my-cache-search' );
 		echo '</form>';
 
 		/*

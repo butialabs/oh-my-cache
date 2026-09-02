@@ -24,7 +24,7 @@ defined( 'ABSPATH' ) || exit;
 /*
  * PHPCS exemption, file scope. The listing query reads the plugin's own jobs table, named from
  * $wpdb->prefix, with every value passed as a placeholder. Results are deliberately uncached:
- * `wp omc queue list` exists to show the queue as it is right now.
+ * `wp oh-my-cache queue list` exists to show the queue as it is right now.
  */
 // phpcs:disable WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 // phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery
@@ -58,7 +58,7 @@ final class Command {
 	 *
 	 * ## EXAMPLES
 	 *
-	 *     wp omc purge https://example.com/ --now
+	 *     wp oh-my-cache purge https://example.com/ --now
 	 *
 	 * @param array<int, string>    $args       URLs.
 	 * @param array<string, string> $assoc_args Flags.
@@ -149,7 +149,7 @@ final class Command {
 	 * ## EXAMPLES
 	 *
 	 *     # The documented escape hatch when DISABLE_WP_CRON is set.
-	 *     * * * * * wp omc queue run --all --quiet
+	 *     * * * * * wp oh-my-cache queue run --all --quiet
 	 *
 	 * @param array<int, string>    $args       Subcommand.
 	 * @param array<string, string> $assoc_args Flags.

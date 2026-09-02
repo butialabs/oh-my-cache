@@ -204,7 +204,7 @@ final class Plugin {
 		}
 
 		if ( defined( 'WP_CLI' ) && WP_CLI && class_exists( '\WP_CLI' ) ) {
-			\WP_CLI::add_command( 'omc', Cli\Command::class );
+			\WP_CLI::add_command( 'oh-my-cache', Cli\Command::class );
 		}
 	}
 

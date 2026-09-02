@@ -2,14 +2,14 @@
  * Oh My Cache!
  */
 
-.omc-cards {
+.oh-my-cache-cards {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 16px;
 	margin: 16px 0;
 }
 
-.omc-card {
+.oh-my-cache-card {
 	background: #fff;
 	border: 1px solid #c3c4c7;
 	border-radius: 4px;
@@ -18,54 +18,54 @@
 	padding: 12px 16px;
 }
 
-.omc-card h3 {
+.oh-my-cache-card h3 {
 	margin: 0 0 6px;
 }
 
-.omc-card .omc-state {
+.oh-my-cache-card .oh-my-cache-state {
 	font-weight: 600;
 	margin: 0 0 4px;
 }
 
-.omc-card .omc-reason,
-.omc-card .omc-hint,
-.omc-card .omc-meta {
+.oh-my-cache-card .oh-my-cache-reason,
+.oh-my-cache-card .oh-my-cache-hint,
+.oh-my-cache-card .oh-my-cache-meta {
 	color: #646970;
 	font-size: 12px;
 	margin: 0 0 4px;
 }
 
-.omc-warning {
+.oh-my-cache-warning {
 	color: #996800;
 }
 
-.omc-actions {
+.oh-my-cache-actions {
 	margin: 16px 0;
 }
 
-.omc-inline-field {
+.oh-my-cache-inline-field {
 	display: inline-block;
 	margin-left: 8px;
 }
 
-.omc-table th {
+.oh-my-cache-table th {
 	width: 240px;
 }
 
 /* Diagnostics rows carry their state on the left edge rather than in colour alone. */
-.omc-check--ok th {
+.oh-my-cache-check--ok th {
 	border-left: 4px solid #00a32a;
 }
 
-.omc-check--warning th {
+.oh-my-cache-check--warning th {
 	border-left: 4px solid #dba617;
 }
 
-.omc-check--error th {
+.oh-my-cache-check--error th {
 	border-left: 4px solid #d63638;
 }
 
-.omc-status {
+.oh-my-cache-status {
 	border-radius: 9px;
 	display: inline-block;
 	font-size: 11px;
@@ -73,28 +73,28 @@
 	padding: 0 8px;
 }
 
-.omc-status--info {
+.oh-my-cache-status--info {
 	background: #e5f0f7;
 	color: #0a4b78;
 }
 
-.omc-status--warning {
+.oh-my-cache-status--warning {
 	background: #fcf3e3;
 	color: #7a5000;
 }
 
-.omc-status--success {
+.oh-my-cache-status--success {
 	background: #edfaef;
 	color: #005c12;
 }
 
-.omc-status--error {
+.oh-my-cache-status--error {
 	background: #fcf0f1;
 	color: #8a2424;
 }
 
-.omc-urls,
-.omc-error {
+.oh-my-cache-urls,
+.oh-my-cache-error {
 	background: #f6f7f7;
 	font-family: Consolas, Monaco, monospace;
 	font-size: 12px;
@@ -106,7 +106,7 @@
 	word-break: break-all;
 }
 
-.omc-expression {
+.oh-my-cache-expression {
 	background: #f6f7f7;
 	border: 1px solid #dcdcde;
 	font-size: 12px;
@@ -116,7 +116,7 @@
 	word-break: break-word;
 }
 
-.omc-progress {
+.oh-my-cache-progress {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 8px;
@@ -125,50 +125,50 @@
 	padding: 0;
 }
 
-.omc-progress__item {
+.oh-my-cache-progress__item {
 	background: #f0f0f1;
 	border-radius: 3px;
-	counter-increment: omc-step;
+	counter-increment: oh-my-cache-step;
 	padding: 6px 12px;
 }
 
-.omc-progress__item a {
+.oh-my-cache-progress__item a {
 	text-decoration: none;
 }
 
-.omc-progress__item.is-current {
+.oh-my-cache-progress__item.is-current {
 	background: #2271b1;
 }
 
-.omc-progress__item.is-current a {
+.oh-my-cache-progress__item.is-current a {
 	color: #fff;
 }
 
-.omc-progress__item.is-done::before {
+.oh-my-cache-progress__item.is-done::before {
 	content: "\2713\00a0";
 	color: #00a32a;
 }
 
-.omc-progress__item.is-current.is-done::before {
+.oh-my-cache-progress__item.is-current.is-done::before {
 	color: #fff;
 }
 
-.omc-checklist {
+.oh-my-cache-checklist {
 	list-style: none;
 	margin: 8px 0;
 	padding: 0;
 }
 
-.omc-checklist .is-ok {
+.oh-my-cache-checklist .is-ok {
 	color: #005c12;
 }
 
-.omc-checklist .is-missing {
+.oh-my-cache-checklist .is-missing {
 	color: #8a2424;
 	font-weight: 600;
 }
 
-.omc-badge {
+.oh-my-cache-badge {
 	background: #d63638;
 	border-radius: 8px;
 	color: #fff;
@@ -181,12 +181,12 @@
 
 /* Tabbed settings and wizard */
 
-.omc-panel {
+.oh-my-cache-panel {
 	margin-top: 8px;
 }
 
-.omc-driver-block,
-.omc-cdn-block {
+.oh-my-cache-driver-block,
+.oh-my-cache-cdn-block {
 	background: #fff;
 	border: 1px solid #dcdcde;
 	border-radius: 4px;
@@ -194,17 +194,17 @@
 	padding: 4px 16px 12px;
 }
 
-.omc-driver-block h3,
-.omc-cdn-block h3 {
+.oh-my-cache-driver-block h3,
+.oh-my-cache-cdn-block h3 {
 	margin-top: 12px;
 }
 
 /* Radio choices with a line of explanation underneath. */
-.omc-choice-help {
+.oh-my-cache-choice-help {
 	margin: 0 0 10px 24px;
 }
 
-.omc-tab-done {
+.oh-my-cache-tab-done {
 	color: #00a32a;
 	font-size: 16px;
 	height: 16px;
@@ -212,39 +212,39 @@
 	width: 16px;
 }
 
-.nav-tab-active .omc-tab-done {
+.nav-tab-active .oh-my-cache-tab-done {
 	color: #135e96;
 }
 
-.omc-result-list {
+.oh-my-cache-result-list {
 	list-style: disc;
 	margin: 0 0 12px 24px;
 }
 
-.omc-test-result.is-ok {
+.oh-my-cache-test-result.is-ok {
 	color: #005c12;
 }
 
-.omc-test-result.is-missing {
+.oh-my-cache-test-result.is-missing {
 	color: #8a2424;
 }
 
-.omc-wizard .form-table th {
+.oh-my-cache-wizard .form-table th {
 	width: 220px;
 }
 
-.omc-secrets-fields {
+.oh-my-cache-secrets-fields {
 	display: none;
 }
 
 /* Card: category as the heading, the product filling it underneath. */
-.omc-card .omc-provider {
+.oh-my-cache-card .oh-my-cache-provider {
 	font-size: 15px;
 	font-weight: 600;
 	margin: 0 0 4px;
 }
 
-.omc-card .omc-state {
+.oh-my-cache-card .oh-my-cache-state {
 	color: #646970;
 	font-size: 12px;
 	font-weight: 400;

@@ -29,7 +29,7 @@ defined( 'ABSPATH' ) || exit;
 /**
  * Answers "why is my cache not clearing?" before anyone has to ask.
  *
- * Shared verbatim between the admin screen and `wp omc doctor`, so a support conversation can
+ * Shared verbatim between the admin screen and `wp oh-my-cache doctor`, so a support conversation can
  * be a single command rather than a screenshot exchange.
  */
 final class Doctor {
@@ -320,7 +320,7 @@ final class Doctor {
 					human_time_diff( time() - $age, time() )
 				),
 			$stalled
-				? __( 'Work is waiting but the worker is not running. If DISABLE_WP_CRON is set, add a system crontab entry: * * * * * wp omc queue run --all --quiet', 'oh-my-cache' )
+				? __( 'Work is waiting but the worker is not running. If DISABLE_WP_CRON is set, add a system crontab entry: * * * * * wp oh-my-cache queue run --all --quiet', 'oh-my-cache' )
 				: ''
 		);
 
@@ -330,7 +330,7 @@ final class Doctor {
 				self::WARNING,
 				__( 'WP-Cron', 'oh-my-cache' ),
 				__( 'DISABLE_WP_CRON is set, so WordPress will not run scheduled work on its own.', 'oh-my-cache' ),
-				__( 'A real crontab must call wp-cron.php or `wp omc queue run --all`, otherwise queued purges never happen.', 'oh-my-cache' )
+				__( 'A real crontab must call wp-cron.php or `wp oh-my-cache queue run --all`, otherwise queued purges never happen.', 'oh-my-cache' )
 			);
 		}
 

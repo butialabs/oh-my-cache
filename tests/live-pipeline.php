@@ -47,7 +47,7 @@ $settings                                 = Options::all();
 $settings['enabled']                      = true;
 $settings['drivers']['redis']['enabled']  = true;
 $settings['drivers']['redis']['database'] = 9;
-$settings['drivers']['redis']['prefix']   = 'omc-test:';
+$settings['drivers']['redis']['prefix']   = 'oh-my-cache-test:';
 $settings['drivers']['nginx']['enabled']  = false;
 $settings['dispatch']['mode']             = 'realtime';
 Options::save( $settings );
@@ -75,7 +75,7 @@ $queue = $plugin->container()->get( 'queue' );
 
 WP_CLI::log( '== fixture ==' );
 
-$category_id = wp_create_category( 'omc-test-category' );
+$category_id = wp_create_category( 'oh-my-cache-test-category' );
 
 /*
  * post_author must be explicit: under WP-CLI there is no current user, so WordPress would

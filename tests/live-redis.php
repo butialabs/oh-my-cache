@@ -52,7 +52,7 @@ $settings['drivers']['redis']['enabled']    = true;
 $settings['drivers']['redis']['host']       = '127.0.0.1';
 $settings['drivers']['redis']['port']       = 6379;
 $settings['drivers']['redis']['database']   = 9;
-$settings['drivers']['redis']['prefix']     = 'omc-test:';
+$settings['drivers']['redis']['prefix']     = 'oh-my-cache-test:';
 Options::save( $settings );
 Options::flush();
 
@@ -132,14 +132,14 @@ t_true( 'result reports no failures', ! $result->has_failures() );
 WP_CLI::log( '== purge_all via SCAN ==' );
 
 for ( $i = 0; $i < 250; $i++ ) {
-	$redis->set( 'omc-test:httpsGETwordpress.local/bulk/' . $i, 'x' );
+	$redis->set( 'oh-my-cache-test:httpsGETwordpress.local/bulk/' . $i, 'x' );
 }
 
 $before = $redis->dbSize();
 $result = $driver->purge_all();
 
 t_true( 'purge_all reported no failures', ! $result->has_failures() );
-t_check( 'every prefixed key gone', count( $redis->keys( 'omc-test:*' ) ), 0 );
+t_check( 'every prefixed key gone', count( $redis->keys( 'oh-my-cache-test:*' ) ), 0 );
 t_check( 'the other prefix survived purge_all', $redis->exists( 'other-app:httpsGETwordpress.local/' ), 1 );
 
 WP_CLI::log( '  swept ' . ( $before - 1 ) . ' keys, summary: ' . $result->summary() );
@@ -158,7 +158,7 @@ t_true( 'empty prefix refuses to run', ! $blank->availability()->ok );
 WP_CLI::log( '  reason: ' . $blank->availability()->reason );
 
 // Put it back.
-$settings['drivers']['redis']['prefix'] = 'omc-test:';
+$settings['drivers']['redis']['prefix'] = 'oh-my-cache-test:';
 Options::save( $settings );
 Options::flush();
 

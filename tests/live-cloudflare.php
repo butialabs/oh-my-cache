@@ -89,7 +89,7 @@ add_filter(
 		OmcCfTally::$next = [];
 
 		if ( ! $next ) {
-			return new WP_Error( 'omc_test', 'No fixture queued for this call.' );
+			return new WP_Error( 'oh_my_cache_test', 'No fixture queued for this call.' );
 		}
 
 		if ( ! empty( $next['wp_error'] ) ) {
@@ -308,7 +308,7 @@ Cooldown::close( 'cloudflare' );
 $queue->delete( array_map( static fn ( $j ) => $j->id, [] ) );
 
 global $wpdb;
-$wpdb->query( "DELETE FROM {$wpdb->prefix}omc_jobs WHERE reason = 'cf-test'" );
+$wpdb->query( "DELETE FROM {$wpdb->prefix}oh_my_cache_jobs WHERE reason = 'cf-test'" );
 $queue->resync_depth();
 
 Options::forget_stored_secret( 'cf_api_token' );

@@ -53,7 +53,7 @@ final class Dashboard {
 			add_query_arg(
 				[
 					'page'       => Menu::SLUG,
-					'omc-notice' => $notice,
+					'oh-my-cache-notice' => $notice,
 				],
 				admin_url( 'admin.php' )
 			)
@@ -64,7 +64,7 @@ final class Dashboard {
 	public function render(): void {
 		// A message we put in the URL ourselves after a redirect; displayed, never acted on.
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		$notice = isset( $_GET['omc-notice'] ) ? sanitize_text_field( wp_unslash( $_GET['omc-notice'] ) ) : '';
+		$notice = isset( $_GET['oh-my-cache-notice'] ) ? sanitize_text_field( wp_unslash( $_GET['oh-my-cache-notice'] ) ) : '';
 
 		if ( '' !== $notice ) {
 			printf(
@@ -83,7 +83,7 @@ final class Dashboard {
 		$doctor  = ( new Doctor( $this->container ) )->run();
 		$last    = Scheduler::last_run_age();
 
-		echo '<div class="wrap omc">';
+		echo '<div class="wrap oh-my-cache">';
 		printf( '<h1>%s</h1>', esc_html__( 'Oh My Cache!', 'oh-my-cache' ) );
 
 		$this->render_actions();
@@ -94,7 +94,7 @@ final class Dashboard {
 		 * NGINX or Redis sitting there "Disabled", since they are mutually exclusive, and would
 		 * treat Cloudflare as though it were the category rather than one answer to it.
 		 */
-		echo '<div class="omc-cards">';
+		echo '<div class="oh-my-cache-cards">';
 
 		$this->render_card(
 			__( 'Driver', 'oh-my-cache' ),
@@ -127,12 +127,12 @@ final class Dashboard {
 	 * @param string               $empty   What to show in place of a product name when null.
 	 */
 	private function render_card( string $title, ?DriverInterface $driver, string $empty ): void {
-		echo '<div class="omc-card">';
+		echo '<div class="oh-my-cache-card">';
 		printf( '<h3>%s</h3>', esc_html( $title ) );
 
 		if ( ! $driver instanceof DriverInterface ) {
-			printf( '<p class="omc-provider">%s</p>', esc_html( $empty ) );
-			printf( '<p class="omc-state">%s</p>', esc_html__( 'Not configured', 'oh-my-cache' ) );
+			printf( '<p class="oh-my-cache-provider">%s</p>', esc_html( $empty ) );
+			printf( '<p class="oh-my-cache-state">%s</p>', esc_html__( 'Not configured', 'oh-my-cache' ) );
 			echo '</div>';
 
 			return;
@@ -140,22 +140,22 @@ final class Dashboard {
 
 		$availability = $driver->availability();
 
-		printf( '<p class="omc-provider">%s</p>', esc_html( $driver->label() ) );
+		printf( '<p class="oh-my-cache-provider">%s</p>', esc_html( $driver->label() ) );
 		printf(
-			'<p class="omc-state">%s</p>',
+			'<p class="oh-my-cache-state">%s</p>',
 			esc_html( $availability->ok ? __( 'Ready', 'oh-my-cache' ) : __( 'Unavailable', 'oh-my-cache' ) )
 		);
 
 		if ( ! $availability->ok ) {
-			printf( '<p class="omc-reason">%s</p>', esc_html( $availability->reason ) );
+			printf( '<p class="oh-my-cache-reason">%s</p>', esc_html( $availability->reason ) );
 
 			if ( '' !== $availability->hint ) {
-				printf( '<p class="omc-hint">%s</p>', esc_html( $availability->hint ) );
+				printf( '<p class="oh-my-cache-hint">%s</p>', esc_html( $availability->hint ) );
 			}
 		}
 
 		printf(
-			'<p class="omc-meta">%s</p>',
+			'<p class="oh-my-cache-meta">%s</p>',
 			esc_html(
 				sprintf(
 					/* translators: %s: dispatch mode. */
@@ -167,7 +167,7 @@ final class Dashboard {
 
 		if ( Cooldown::active( $driver->id() ) ) {
 			printf(
-				'<p class="omc-warning">%s</p>',
+				'<p class="oh-my-cache-warning">%s</p>',
 				esc_html(
 					sprintf(
 						/* translators: %d: seconds. */
@@ -182,9 +182,9 @@ final class Dashboard {
 	}
 
 	private function render_actions(): void {
-		echo '<form method="post" class="omc-actions">';
+		echo '<form method="post" class="oh-my-cache-actions">';
 		wp_nonce_field( self::ACTION );
-		printf( '<input type="hidden" name="omc_action" value="1" />' );
+		printf( '<input type="hidden" name="oh_my_cache_action" value="1" />' );
 
 		printf(
 			'<button type="submit" name="do" value="purge_all" class="button button-primary">%s</button> ',
@@ -197,7 +197,7 @@ final class Dashboard {
 		);
 
 		printf(
-			'<span class="omc-inline-field"><input type="url" name="url" placeholder="%s" class="regular-text" /> <button type="submit" name="do" value="purge_url" class="button">%s</button></span>',
+			'<span class="oh-my-cache-inline-field"><input type="url" name="url" placeholder="%s" class="regular-text" /> <button type="submit" name="do" value="purge_url" class="button">%s</button></span>',
 			esc_attr__( 'https://example.com/a-page/', 'oh-my-cache' ),
 			esc_html__( 'Purge this URL', 'oh-my-cache' )
 		);
@@ -213,7 +213,7 @@ final class Dashboard {
 		}
 
 		echo '<h2>' . esc_html__( 'Cloudflare', 'oh-my-cache' ) . '</h2>';
-		echo '<table class="widefat striped omc-table"><tbody>';
+		echo '<table class="widefat striped oh-my-cache-table"><tbody>';
 
 		$rows = [
 			__( 'Zone', 'oh-my-cache' )       => (string) Options::cf_state( 'zone_name', '' ) ?: __( 'not resolved', 'oh-my-cache' ),
@@ -311,11 +311,11 @@ final class Dashboard {
 	 */
 	private function render_doctor( array $results ): void {
 		echo '<h2>' . esc_html__( 'Diagnostics', 'oh-my-cache' ) . '</h2>';
-		echo '<table class="widefat striped omc-table"><tbody>';
+		echo '<table class="widefat striped oh-my-cache-table"><tbody>';
 
 		foreach ( $results as $result ) {
 			printf(
-				'<tr class="omc-check omc-check--%s"><th scope="row">%s</th><td>%s%s</td></tr>',
+				'<tr class="oh-my-cache-check oh-my-cache-check--%s"><th scope="row">%s</th><td>%s%s</td></tr>',
 				esc_attr( $result['status'] ),
 				esc_html( $result['label'] ),
 				esc_html( $result['detail'] ),
@@ -334,7 +334,7 @@ final class Dashboard {
 	 * @return string Notice text for the redirect, or empty when nothing happened.
 	 */
 	private function handle_post(): string {
-		if ( empty( $_POST['omc_action'] ) ) {
+		if ( empty( $_POST['oh_my_cache_action'] ) ) {
 			return '';
 		}
 

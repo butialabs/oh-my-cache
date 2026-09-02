@@ -206,7 +206,7 @@ final class DriverStep extends AbstractStep {
 	 */
 	private function choice( string $value, string $label, string $help, string $current ): void {
 		printf(
-			'<label><input type="radio" name="local_driver" value="%s" %s class="omc-driver-choice" /> <strong>%s</strong></label><p class="description omc-choice-help">%s</p>',
+			'<label><input type="radio" name="local_driver" value="%s" %s class="oh-my-cache-driver-choice" /> <strong>%s</strong></label><p class="description oh-my-cache-choice-help">%s</p>',
 			esc_attr( $value ),
 			checked( $current, $value, false ),
 			esc_html( $label ),
@@ -215,7 +215,7 @@ final class DriverStep extends AbstractStep {
 	}
 
 	private function render_nginx_block(): void {
-		printf( '<div class="omc-driver-block" data-omc-driver-block="nginx"%s>', 'nginx' === Options::local_driver() ? '' : ' hidden' );
+		printf( '<div class="oh-my-cache-driver-block" data-oh-my-cache-driver-block="nginx"%s>', 'nginx' === Options::local_driver() ? '' : ' hidden' );
 		printf( '<h3>%s</h3>', esc_html__( 'NGINX', 'oh-my-cache' ) );
 
 		$detected = $this->detect_path();
@@ -239,7 +239,7 @@ final class DriverStep extends AbstractStep {
 	}
 
 	private function render_redis_block(): void {
-		printf( '<div class="omc-driver-block" data-omc-driver-block="redis"%s>', 'redis' === Options::local_driver() ? '' : ' hidden' );
+		printf( '<div class="oh-my-cache-driver-block" data-oh-my-cache-driver-block="redis"%s>', 'redis' === Options::local_driver() ? '' : ' hidden' );
 		printf( '<h3>%s</h3>', esc_html__( 'Redis', 'oh-my-cache' ) );
 
 		if ( ! Connection::extension_ok() ) {
@@ -334,7 +334,7 @@ final class DriverStep extends AbstractStep {
 	 * @param string $dir Directory.
 	 */
 	private function can_write( string $dir ): bool {
-		$probe = $dir . '/.omc-probe-' . wp_generate_password( 8, false, false );
+		$probe = $dir . '/.oh-my-cache-probe-' . wp_generate_password( 8, false, false );
 
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
 		if ( false === @file_put_contents( $probe, 'x' ) ) {

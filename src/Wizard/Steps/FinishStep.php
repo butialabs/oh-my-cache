@@ -49,11 +49,11 @@ final class FinishStep extends AbstractStep {
 
 		$results = ( new Doctor( $this->container ) )->run();
 
-		echo '<table class="widefat striped omc-table"><tbody>';
+		echo '<table class="widefat striped oh-my-cache-table"><tbody>';
 
 		foreach ( $results as $result ) {
 			printf(
-				'<tr class="omc-check omc-check--%s"><th scope="row">%s</th><td>%s%s</td></tr>',
+				'<tr class="oh-my-cache-check oh-my-cache-check--%s"><th scope="row">%s</th><td>%s%s</td></tr>',
 				esc_attr( $result['status'] ),
 				esc_html( $result['label'] ),
 				esc_html( $result['detail'] ),

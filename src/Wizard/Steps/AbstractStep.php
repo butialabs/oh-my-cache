@@ -97,7 +97,7 @@ abstract class AbstractStep implements StepInterface {
 	 */
 	protected function test_summary( array $checks ): void {
 		printf(
-			'<div class="notice notice-info inline"><p><strong>%s</strong></p><ul class="omc-checklist">',
+			'<div class="notice notice-info inline"><p><strong>%s</strong></p><ul class="oh-my-cache-checklist">',
 			esc_html__( 'Before continuing, this is checked:', 'oh-my-cache' )
 		);
 

@@ -55,7 +55,7 @@ final class Notices {
 			sprintf(
 				/* translators: %s: WP-CLI command, already escaped. */
 				__( 'If DISABLE_WP_CRON is set, add a system cron entry such as %s, otherwise queued purges will never happen and pages will stay stale.', 'oh-my-cache' ),
-				'<code>* * * * * wp omc queue run --all --quiet</code>'
+				'<code>* * * * * wp oh-my-cache queue run --all --quiet</code>'
 			)
 		);
 	}

@@ -50,7 +50,7 @@ final class QueueListTable extends \WP_List_Table {
 		parent::__construct(
 			[
 				'singular' => 'job',
-				'plural'   => 'jobs',
+				'plural'   => 'oh-my-cache-jobs',
 				'ajax'     => false,
 			]
 		);
@@ -222,7 +222,7 @@ final class QueueListTable extends \WP_List_Table {
 	 */
 	protected function column_status( Job $item ): string {
 		return sprintf(
-			'<span class="omc-status omc-status--%s">%s</span>',
+			'<span class="oh-my-cache-status oh-my-cache-status--%s">%s</span>',
 			esc_attr( $item->status->tone() ),
 			esc_html( $item->status->label() )
 		);
@@ -275,7 +275,7 @@ final class QueueListTable extends \WP_List_Table {
 		);
 
 		return sprintf(
-			'<details><summary>%s</summary><div class="omc-urls">%s</div></details>',
+			'<details><summary>%s</summary><div class="oh-my-cache-urls">%s</div></details>',
 			esc_html( $summary ),
 			esc_html( implode( "\n", $urls ) )
 		);
@@ -301,7 +301,7 @@ final class QueueListTable extends \WP_List_Table {
 		}
 
 		return sprintf(
-			'<details><summary>%s</summary><div class="omc-error">%s</div></details>',
+			'<details><summary>%s</summary><div class="oh-my-cache-error">%s</div></details>',
 			esc_html( mb_substr( $text, 0, 120 ) . '…' ),
 			esc_html( $text )
 		);

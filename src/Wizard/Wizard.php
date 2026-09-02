@@ -70,7 +70,7 @@ final class Wizard {
 		$index = $this->current_index();
 		$step  = $this->steps[ $index ];
 
-		echo '<div class="wrap omc omc-wizard">';
+		echo '<div class="wrap oh-my-cache oh-my-cache-wizard">';
 		printf( '<h1>%s</h1>', esc_html__( 'Set up Oh My Cache!', 'oh-my-cache' ) );
 
 		printf(
@@ -81,7 +81,7 @@ final class Wizard {
 		$this->render_nav( $index );
 		$this->render_notice();
 
-		echo '<form method="post" class="omc-wizard-form">';
+		echo '<form method="post" class="oh-my-cache-wizard-form">';
 		wp_nonce_field( self::ACTION );
 		printf( '<input type="hidden" name="step" value="%s" />', esc_attr( $step->id() ) );
 
@@ -145,7 +145,7 @@ final class Wizard {
 					)
 				),
 				esc_attr( $classes ),
-				$step->is_complete() ? '<span class="dashicons dashicons-yes omc-tab-done" aria-hidden="true"></span> ' : '',
+				$step->is_complete() ? '<span class="dashicons dashicons-yes oh-my-cache-tab-done" aria-hidden="true"></span> ' : '',
 				esc_html( $step->title() )
 			);
 		}
@@ -171,7 +171,7 @@ final class Wizard {
 		$details = (array) ( $notice['details'] ?? [] );
 
 		if ( $details ) {
-			echo '<ul class="omc-result-list">';
+			echo '<ul class="oh-my-cache-result-list">';
 
 			foreach ( $details as $detail ) {
 				printf(
@@ -238,7 +238,7 @@ final class Wizard {
 				add_query_arg(
 					[
 						'page'       => Menu::SLUG,
-						'omc-notice' => $result->message,
+						'oh-my-cache-notice' => $result->message,
 					],
 					admin_url( 'admin.php' )
 				)

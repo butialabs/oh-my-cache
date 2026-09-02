@@ -52,7 +52,7 @@ $settings['drivers']['nginx']['enabled']      = false;
 $settings['drivers']['redis']['enabled']      = false;
 $settings['drivers']['cloudflare']['enabled'] = false;
 $settings['drivers']['redis']['database']     = 9;
-$settings['drivers']['redis']['prefix']       = 'omc-wizard:';
+$settings['drivers']['redis']['prefix']       = 'oh-my-cache-wizard:';
 $settings['cdn']['provider']                  = 'cloudflare';
 Options::save( $settings );
 Options::set_cf_state(
@@ -90,7 +90,7 @@ WP_CLI::log( '  refused with: ' . $result->message );
 $result = $driver->apply(
 	[
 		'local_driver' => 'redis',
-		'redis_prefix' => 'omc-wizard:',
+		'redis_prefix' => 'oh-my-cache-wizard:',
 	]
 );
 
@@ -111,7 +111,7 @@ w_check( 'but nginx has no cache folder here, so the test fails', $result->ok, f
 $driver->apply(
 	[
 		'local_driver' => 'redis',
-		'redis_prefix' => 'omc-wizard:',
+		'redis_prefix' => 'oh-my-cache-wizard:',
 	]
 );
 Options::flush();
@@ -199,7 +199,7 @@ w_check(
 // --- Clean up -----------------------------------------------------------------------------------
 
 $settings                                = Options::all();
-$settings['drivers']['redis']['prefix']  = 'omc-live:';
+$settings['drivers']['redis']['prefix']  = 'oh-my-cache-live:';
 $settings['edge']['ttl_seconds']         = 0;
 Options::save( $settings );
 Options::set_cf_state( [ 'test_purge_ok' => false, 'driver_tested' => false ] );

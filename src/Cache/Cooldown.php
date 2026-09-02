@@ -31,8 +31,8 @@ defined( 'ABSPATH' ) || exit;
  */
 final class Cooldown {
 
-	private const PREFIX  = 'omc_cooldown_';
-	private const FAILURE = 'omc_inline_fails_';
+	private const PREFIX  = 'oh_my_cache_cooldown_';
+	private const FAILURE = 'oh_my_cache_inline_fails_';
 
 	/**
 	 * Whether a driver is currently benched.

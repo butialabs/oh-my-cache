@@ -40,7 +40,7 @@ final class Schema {
 	/**
 	 * Bumping this triggers maybeUpgrade on the next request; no reactivation needed.
 	 */
-	public const DB_VERSION = 1;
+	public const DB_VERSION = 2;
 
 	/**
 	 * Fully qualified table name for this site.
@@ -51,7 +51,7 @@ final class Schema {
 	public static function table(): string {
 		global $wpdb;
 
-		return $wpdb->prefix . 'omc_jobs';
+		return $wpdb->prefix . 'oh_my_cache_jobs';
 	}
 
 	/**

@@ -96,7 +96,7 @@ final class Scheduler {
 	 *
 	 * That is acceptable because inline dispatch is the normal path and the queue is the
 	 * exception. Sites that need a hard guarantee have two real options, both documented:
-	 * queue.worker_mode = inline|both, or a system crontab running `wp omc queue run --all`.
+	 * queue.worker_mode = inline|both, or a system crontab running `wp oh-my-cache queue run --all`.
 	 */
 	public static function kick(): void {
 		if ( ! wp_next_scheduled( self::HOOK_NOW ) ) {

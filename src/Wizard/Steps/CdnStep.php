@@ -72,7 +72,7 @@ final class CdnStep extends AbstractStep {
 
 		foreach ( Providers::all() as $value => $label ) {
 			printf(
-				'<label><input type="radio" name="cdn_provider" value="%s" %s class="omc-cdn-choice" /> <strong>%s</strong></label><br />',
+				'<label><input type="radio" name="cdn_provider" value="%s" %s class="oh-my-cache-cdn-choice" /> <strong>%s</strong></label><br />',
 				esc_attr( (string) $value ),
 				checked( $provider, (string) $value, false ),
 				esc_html( $label )
@@ -82,7 +82,7 @@ final class CdnStep extends AbstractStep {
 		echo '</fieldset></td></tr>';
 		$this->table_close();
 
-		echo '<div class="omc-cdn-block" data-omc-cdn-block="cloudflare">';
+		echo '<div class="oh-my-cache-cdn-block" data-oh-my-cache-cdn-block="cloudflare">';
 		$this->render_cloudflare();
 		echo '</div>';
 	}
