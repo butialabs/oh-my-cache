@@ -3,7 +3,7 @@
  * Plugin Name:       Oh My Cache!
  * Plugin URI:        https://github.com/butialabs/oh-my-cache
  * Description:       Clears your NGINX or Redis page cache and then Cloudflare and retries anything that fails instead of losing it.
- * Version:           0.1.0
+ * Version:           0.1.3
  * Requires at least: 6.2
  * Requires PHP:      8.1
  * Author:            Butiá Labs
@@ -21,8 +21,8 @@ namespace OhMyCache;
 
 defined( 'ABSPATH' ) || exit;
 
-const VERSION    = '0.1.0';
-const DB_VERSION = 1;
+const VERSION    = '0.1.3';
+const DB_VERSION = 2;
 const MIN_PHP    = '8.1';
 const MIN_WP     = '6.2';
 
