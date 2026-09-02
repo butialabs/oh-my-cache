@@ -8,7 +8,6 @@
 .distignore
 .wordpress-org
 
-composer.json
 composer.lock
 phpcs.xml
 phpcs.xml.dist
@@ -21,3 +20,5 @@ node_modules
 tests
 README.md
 Development.md
+
+logo.png
