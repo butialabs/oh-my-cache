@@ -43,10 +43,12 @@ function oh_my_cache_uninstall_site(): void {
 		return;
 	}
 
-	$table = $wpdb->prefix . 'omc_jobs';
+	foreach ( [ 'oh_my_cache_jobs', 'omc_jobs' ] as $suffix ) {
+		$table = $wpdb->prefix . $suffix;
 
-	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-	$wpdb->query( "DROP TABLE IF EXISTS {$table}" );
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$wpdb->query( "DROP TABLE IF EXISTS {$table}" );
+	}
 
 	$options = [
 		'oh_my_cache_settings',
@@ -71,8 +73,10 @@ function oh_my_cache_uninstall_site(): void {
 	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 	$wpdb->query(
 		$wpdb->prepare(
-			"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s OR option_name LIKE %s",
+			"DELETE FROM {$wpdb->options} WHERE option_name LIKE %s OR option_name LIKE %s OR option_name LIKE %s OR option_name LIKE %s OR option_name LIKE %s",
 			$wpdb->esc_like( 'oh_my_cache_lock_' ) . '%',
+			$wpdb->esc_like( '_transient_oh_my_cache_' ) . '%',
+			$wpdb->esc_like( '_transient_timeout_oh_my_cache_' ) . '%',
 			$wpdb->esc_like( '_transient_omc_' ) . '%',
 			$wpdb->esc_like( '_transient_timeout_omc_' ) . '%'
 		)
