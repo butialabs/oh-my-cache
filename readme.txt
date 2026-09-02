@@ -53,66 +53,62 @@ when that happens.
 
 == External services ==
 
-Cloudflare API. It is used to clear the copy of your pages that Cloudflare holds at its edge
-and if you choose to run the setup wizard's optional steps, to read and write the caching
-configuration of your own Cloudflare zone. Nothing is bundled, and the plugin contacts no
-other outside service: there is no update checker, no licence check, no analytics and no
-telemetry of any kind.
+The plugin talks to one outside service, the Cloudflare API. It clears the copy of your pages
+Cloudflare holds at the edge, and, if you run the wizard's optional steps, reads and writes the
+caching configuration of your own zone. Nothing else leaves your server: no update checker, no
+licence check, no analytics.
 
 = Cloudflare API (https://api.cloudflare.com/client/v4/) =
 
-This is only ever contacted when you have configured a Cloudflare API token. With no token
-stored, the plugin refuses the request before anything leaves your server.
+Only contacted once you have configured a Cloudflare API token. Without one the plugin refuses
+the request before anything leaves your server.
 
-What is sent, and when:
+What it sends, and when:
 
 * Your Cloudflare API token, as an authorization header on every request below.
-* The URLs to be cleared, in batches, whenever content changes on your site (a post is saved,
-  published or deleted, a comment or term changes, the theme is switched), when you press a
-  purge button on the plugin's dashboard or admin bar, when a WP-CLI purge command runs, and
-  when the plugin's queue retries a batch that failed earlier.
-* Your site's hostname, once, while the wizard looks up which Cloudflare zone belongs to it.
-* Your zone identifier, on every request that concerns that zone.
-* If you ask the wizard to create cache rules: the rule expressions it builds for you. These
-  contain your site's WordPress and WooCommerce cookie name prefixes and, for a store, the
-  cart, checkout and account paths taken from your WooCommerce settings.
-* If you ask the wizard to apply recommended zone settings: the setting values being changed.
+* The URLs to clear, in batches, whenever content changes on your site (a post saved, published
+  or deleted, a comment or term edited, the theme switched), when you press a purge button on
+  the dashboard or admin bar, when a WP-CLI purge runs, and when the queue retries a batch that
+  failed earlier.
+* Your site's hostname, once, while the wizard works out which zone belongs to it.
+* Your zone identifier, on every request about that zone.
+* The cache rules, if you ask the wizard to create them. They contain your WordPress and
+  WooCommerce cookie name prefixes and, for a store, the cart, checkout and account paths taken
+  from your WooCommerce settings.
+* The zone settings being changed, if you ask the wizard to apply the recommended ones.
 
-No visitor data, no personal data and no post content is ever sent.
+It never sends visitor data, personal data or post content.
 
 = Cloudflare IP address ranges (https://api.cloudflare.com/client/v4/ips) =
 
-Once a week, WP-Cron fetches Cloudflare's published list of its own IP address ranges. The
-plugin uses the list to confirm that a request really arrived through Cloudflare before it
-trusts the visitor IP address in the CF-Connecting-IP header. The request carries no
-authentication and no data about your site beyond the user agent WordPress sends with any HTTP
-request. A bundled copy of the list is used until the first fetch succeeds.
+Once a week WP-Cron fetches Cloudflare's published list of its own IP ranges. The plugin checks
+that list to confirm a request really arrived through Cloudflare before it trusts the visitor
+address in the CF-Connecting-IP header. The fetch carries no authentication and nothing about
+your site beyond the user agent WordPress puts on any HTTP request. Until it first succeeds, the
+plugin falls back to a copy of the list shipped with it.
 
-Please note that this weekly request is made whenever the plugin is active, including on sites
-that have not configured Cloudflare at all.
+This one runs whenever the plugin is active, including on sites that never configured Cloudflare.
 
 = Cloudflare's terms =
 
-The service is provided by Cloudflare, Inc. Please review their terms and privacy policy:
+Cloudflare, Inc. provides the service. Their terms and privacy policy:
 
 * Terms of use: https://www.cloudflare.com/website-terms/
 * Privacy policy: https://www.cloudflare.com/privacypolicy/
 
 = Requests to your own site =
 
-For completeness, some of the plugin's other requests go over the network but never leave your
-own infrastructure, and involve no third party: clearing NGINX through ngx_cache_purge, reading
-your sitemap index, warming pages with the preloader, and connecting to a Redis server whose
-address you configure yourself.
+The plugin's other network requests never leave your own infrastructure and involve no third
+party: clearing NGINX through ngx_cache_purge, reading your sitemap index, warming pages with the
+preloader, and reaching the Redis server whose address you configure yourself.
 
 == What the plugin stores ==
 
-The plugin creates one custom database table, `{prefix}oh_my_cache_jobs`, holding the queue of
-cache clearing jobs waiting to run or retry. It stores its settings in the options table and
-registers WP-Cron events to run the queue, refresh the sitemap list and refresh the Cloudflare
-IP ranges. Turning on "delete data on uninstall" in the settings removes all of it when the
-plugin is deleted; without that option nothing is removed, so deactivating to debug a conflict
-does not lose your configuration.
+One custom table, `{prefix}oh_my_cache_jobs`, holds the queue of jobs waiting to run or retry.
+Settings live in the options table, and WP-Cron events run the queue and refresh both the sitemap
+list and the Cloudflare IP ranges. Turning on "delete data on uninstall" removes all of it when
+you delete the plugin. Leave it off and nothing is removed, so deactivating to debug a conflict
+does not cost you your configuration.
 
 == Frequently Asked Questions ==
 
@@ -156,12 +152,12 @@ for the whole TTL, and a visitor cannot get past them.
 == Changelog ==
 
 = 0.1.3 =
-* Every option, transient, database table, WP-CLI command, CSS class and query argument now uses the full plugin prefix. Names built from the old three letter prefix are gone.
-* The queue table is now `{prefix}oh_my_cache_jobs`. The old table is not migrated; queued retries waiting at the time of the update are dropped, and the old table is removed on uninstall.
-* The WP-CLI command is now `wp oh-my-cache`. Crontab entries and deploy scripts calling `wp omc` must be updated.
-* Documented the Cloudflare API in the readme, including what is sent, when, and links to Cloudflare's terms and privacy policy.
-* Uninstall now also clears the activation and wizard notices, which the previous cleanup missed.
-* Added a translation template, and stopped shipping repository assets that the plugin does not use.
+* Every option, transient, table, WP-CLI command, CSS class and query argument now carries the full plugin prefix. The old three letter names are gone.
+* The queue table is now `{prefix}oh_my_cache_jobs`. The old one is not migrated: retries waiting when you update are dropped, and the table itself goes on uninstall.
+* The WP-CLI command is now `wp oh-my-cache`. Crontab entries and deploy scripts still calling `wp omc` need updating.
+* The readme now documents the Cloudflare API: what is sent, when, and where to read Cloudflare's terms and privacy policy.
+* Uninstall clears the activation and wizard notices too, which the old cleanup walked past.
+* Added a translation template, and stopped shipping repository files the plugin never uses.
 
 = 0.1.0 =
 * Initial release.
