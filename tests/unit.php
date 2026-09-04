@@ -96,8 +96,17 @@ final class FakeSitemapServer {
 	public function sitemaps_enabled(): bool { return true; }
 }
 function wp_sitemaps_get_server() { return new FakeSitemapServer(); }
-function wp_next_scheduled( $hook, $args = [] ) { return false; }
-function wp_schedule_single_event( $ts, $hook, $args = [] ) { return true; }
+$GLOBALS['__cron'] = [];
+function wp_next_scheduled( $hook, $args = [] ) { return $GLOBALS['__cron'][ $hook ] ?? false; }
+function wp_schedule_event( $ts, $recurrence, $hook, $args = [] ) { $GLOBALS['__cron'][ $hook ] = $ts; return true; }
+function wp_schedule_single_event( $ts, $hook, $args = [] ) { $GLOBALS['__cron'][ $hook ] = $ts; return true; }
+function wp_clear_scheduled_hook( $hook, $args = [] ) { unset( $GLOBALS['__cron'][ $hook ] ); return true; }
+
+/** Any outbound request during the tests is a failure, so record it and refuse it. */
+$GLOBALS['__http'] = [];
+final class WP_Error {}
+function wp_remote_get( $url, $args = [] ) { $GLOBALS['__http'][] = $url; return new WP_Error(); }
+function is_wp_error( $thing ) { return $thing instanceof WP_Error; }
 
 /** post has categories and tags; product has its own taxonomy. */
 function get_object_taxonomies( $type, $output = 'names' ) {
@@ -129,6 +138,7 @@ use OhMyCache\Cloudflare\Expression;
 use OhMyCache\Http\TrueClientIp;
 use OhMyCache\Purge\Sitemaps;
 use OhMyCache\Queue\Backoff;
+use OhMyCache\Queue\Scheduler;
 use OhMyCache\Queue\Job;
 use OhMyCache\Support\Options;
 use OhMyCache\Support\Redactor;
@@ -402,6 +412,41 @@ check( 'cloudflare is registered', Providers::label( 'cloudflare' ), 'Cloudflare
 check( 'default provider', Providers::current(), 'cloudflare' );
 check( 'unknown ids fall back', Providers::sanitize( 'fastly' ), 'cloudflare' );
 check( 'none is accepted', Providers::sanitize( 'none' ), 'none' );
+
+echo "== Cron events follow what is actually switched on ==\n";
+$GLOBALS['__cron'] = [];
+$GLOBALS['__http'] = [];
+Scheduler::schedule();
+check_true( 'the queue worker always runs', wp_next_scheduled( Scheduler::HOOK_WORKER ) );
+check_true( 'so does the queue cleanup', wp_next_scheduled( Scheduler::HOOK_CLEANUP ) );
+check( 'a fresh install never schedules the cloudflare fetch', wp_next_scheduled( Scheduler::HOOK_CF_IPS ), false );
+check( 'nor the sitemap crawl, with no driver to purge with', wp_next_scheduled( Scheduler::HOOK_SITEMAPS ), false );
+
+$settings                           = Options::all();
+$settings['edge']['true_client_ip'] = true;
+Options::save( $settings );
+Scheduler::schedule();
+check_true( 'opting in schedules the range refresh', wp_next_scheduled( Scheduler::HOOK_CF_IPS ) );
+
+$settings['edge']['true_client_ip'] = false;
+Options::save( $settings );
+Scheduler::schedule();
+check( 'opting back out removes it again', wp_next_scheduled( Scheduler::HOOK_CF_IPS ), false );
+
+$settings['drivers']['nginx']['enabled'] = true;
+Options::save( $settings );
+Scheduler::schedule();
+check_true( 'a configured driver brings the sitemap crawl back', wp_next_scheduled( Scheduler::HOOK_SITEMAPS ) );
+
+$settings['drivers']['nginx']['enabled'] = false;
+Options::save( $settings );
+Scheduler::schedule();
+
+echo "== The range refresh refuses to run uninvited ==\n";
+$GLOBALS['__cron'][ Scheduler::HOOK_CF_IPS ] = time();
+TrueClientIp::refresh_ranges();
+check( 'a leftover event contacts nobody', $GLOBALS['__http'], [] );
+check( 'and it clears itself on the way out', wp_next_scheduled( Scheduler::HOOK_CF_IPS ), false );
 
 echo "\n{$pass} passed, {$fail} failed\n";
 exit( $fail > 0 ? 1 : 0 );

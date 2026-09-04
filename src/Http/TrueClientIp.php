@@ -9,6 +9,7 @@ declare( strict_types = 1 );
 
 namespace OhMyCache\Http;
 
+use OhMyCache\Queue\Scheduler;
 use OhMyCache\Support\Options;
 
 defined( 'ABSPATH' ) || exit;
@@ -51,6 +52,17 @@ final class TrueClientIp {
 	}
 
 	/**
+	 * Whether the operator asked for either header rewrite, by constant or by setting.
+	 */
+	public static function is_enabled(): bool {
+		if ( self::forced_by_constant() ) {
+			return true;
+		}
+
+		return Options::flag( 'edge.true_client_ip', false ) || Options::flag( 'edge.force_https_from_proto', false );
+	}
+
+	/**
 	 * Whether wp-config.php or the environment turned this on.
 	 */
 	private static function forced_by_constant(): bool {
@@ -67,7 +79,7 @@ final class TrueClientIp {
 	 * Settings-driven entry point.
 	 */
 	public static function apply_from_settings(): void {
-		if ( ! Options::flag( 'edge.true_client_ip', false ) && ! Options::flag( 'edge.force_https_from_proto', false ) ) {
+		if ( ! self::is_enabled() ) {
 			return;
 		}
 
@@ -249,6 +261,12 @@ final class TrueClientIp {
 	 * Cron callback: refresh the range list from Cloudflare.
 	 */
 	public static function refresh_ranges(): void {
+		if ( ! self::is_enabled() ) {
+			wp_clear_scheduled_hook( Scheduler::HOOK_CF_IPS );
+
+			return;
+		}
+
 		$response = wp_remote_get(
 			'https://api.cloudflare.com/client/v4/ips',
 			[ 'timeout' => 10 ]

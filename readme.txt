@@ -4,7 +4,7 @@ Tags: cache, nginx, redis, cdn, cloudflare
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 8.1
-Stable tag: 0.1.3
+Stable tag: 0.1.4
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -105,10 +105,11 @@ preloader, and reaching the Redis server whose address you configure yourself.
 == What the plugin stores ==
 
 One custom table, `{prefix}oh_my_cache_jobs`, holds the queue of jobs waiting to run or retry.
-Settings live in the options table, and WP-Cron events run the queue and refresh both the sitemap
-list and the Cloudflare IP ranges. Turning on "delete data on uninstall" removes all of it when
-you delete the plugin. Leave it off and nothing is removed, so deactivating to debug a conflict
-does not cost you your configuration.
+Settings live in the options table. WP-Cron runs the queue and cleans it up; the jobs that refresh
+the sitemap list and the Cloudflare IP ranges are scheduled only while the features that need them
+are on, and removed when you switch them off. Turning on "delete data on uninstall" removes all of
+it when you delete the plugin. Leave it off and nothing is removed, so deactivating to debug a
+conflict does not cost you your configuration.
 
 == Frequently Asked Questions ==
 

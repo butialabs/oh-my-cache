@@ -9,6 +9,7 @@ declare( strict_types = 1 );
 
 namespace OhMyCache\Queue;
 
+use OhMyCache\Http\TrueClientIp;
 use OhMyCache\Support\Options;
 
 defined( 'ABSPATH' ) || exit;
@@ -61,21 +62,56 @@ final class Scheduler {
 	 * Ensure the recurring events exist. Idempotent, safe to call on every request.
 	 */
 	public static function schedule(): void {
-		if ( ! wp_next_scheduled( self::HOOK_WORKER ) ) {
-			wp_schedule_event( time() + MINUTE_IN_SECONDS, self::SCHEDULE_MINUTE, self::HOOK_WORKER );
+		// Drains the purge queue out of the database. No network.
+		self::reconcile( self::HOOK_WORKER, self::SCHEDULE_MINUTE, MINUTE_IN_SECONDS, true );
+
+		// Deletes finished and dead rows. No network.
+		self::reconcile( self::HOOK_CLEANUP, 'daily', HOUR_IN_SECONDS, true );
+
+		// Fetches Cloudflare's published IP ranges
+		self::reconcile( self::HOOK_CF_IPS, 'weekly', MINUTE_IN_SECONDS, TrueClientIp::is_enabled() );
+
+		// Reads this site's own sitemap index over HTTP. Pointless until something can purge.
+		self::reconcile( self::HOOK_SITEMAPS, 'twicedaily', MINUTE_IN_SECONDS, self::sitemaps_wanted() );
+
+		if ( ! self::sitemaps_wanted() ) {
+			wp_clear_scheduled_hook( self::HOOK_SITEMAPS_NOW );
+		}
+	}
+
+	/**
+	 * Schedule an event, or clear it when the feature behind it is off.
+	 *
+	 * @param string $hook       Hook name.
+	 * @param string $recurrence Schedule slug.
+	 * @param int    $delay      Seconds until the first run.
+	 * @param bool   $wanted     Whether the feature is on.
+	 */
+	private static function reconcile( string $hook, string $recurrence, int $delay, bool $wanted ): void {
+		$scheduled = (bool) wp_next_scheduled( $hook );
+
+		if ( ! $wanted ) {
+			if ( $scheduled ) {
+				wp_clear_scheduled_hook( $hook );
+			}
+
+			return;
 		}
 
-		if ( ! wp_next_scheduled( self::HOOK_CLEANUP ) ) {
-			wp_schedule_event( time() + HOUR_IN_SECONDS, 'daily', self::HOOK_CLEANUP );
+		if ( ! $scheduled ) {
+			wp_schedule_event( time() + $delay, $recurrence, $hook );
+		}
+	}
+
+	/**
+	 * Whether discovering this site's sitemap URLs is worth a request.
+	 */
+	private static function sitemaps_wanted(): bool {
+		if ( ! Options::flag( 'purge.sitemaps', true ) ) {
+			return false;
 		}
 
-		if ( ! wp_next_scheduled( self::HOOK_CF_IPS ) ) {
-			wp_schedule_event( time() + HOUR_IN_SECONDS, 'weekly', self::HOOK_CF_IPS );
-		}
-
-		if ( ! wp_next_scheduled( self::HOOK_SITEMAPS ) ) {
-			wp_schedule_event( time() + MINUTE_IN_SECONDS, 'twicedaily', self::HOOK_SITEMAPS );
-		}
+		return 'none' !== Options::local_driver() || Options::flag( 'drivers.cloudflare.enabled', false );
 	}
 
 	/**

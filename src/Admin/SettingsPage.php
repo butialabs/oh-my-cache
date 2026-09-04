@@ -395,7 +395,7 @@ final class SettingsPage {
 			'edge[true_client_ip]',
 			__( 'Restore the visitor IP address', 'oh-my-cache' ),
 			(bool) $settings['edge']['true_client_ip'],
-			__( 'Without it, every visitor looks like a Cloudflare server. It only trusts requests that genuinely come from Cloudflare. The OH_MY_CACHE_TRUE_CLIENT_IP constant does the same job earlier, before other plugins read the address.', 'oh-my-cache' )
+			__( 'Without it, every visitor looks like a Cloudflare server. It only trusts requests that genuinely come from Cloudflare, which means a weekly WP-Cron job fetching the IP ranges Cloudflare publishes at api.cloudflare.com while either of these two is on. The OH_MY_CACHE_TRUE_CLIENT_IP constant does the same job earlier, before other plugins read the address.', 'oh-my-cache' )
 		);
 
 		$this->checkbox(
